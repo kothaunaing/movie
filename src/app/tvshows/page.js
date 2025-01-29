@@ -5,26 +5,26 @@ export async function generateMetadata({ searchParams }) {
   const { page } = await searchParams;
 
   return {
-    title: page ? `Movies | Page ${page}` : "ZFlix | Movies",
-    description: "Explore movies",
+    title: page ? `TV shows | Page ${page}` : "ZFlix | TV Shows",
+    description: "Explore TV shows",
   };
 }
 
-const MoviesType = async ({ searchParams }) => {
+const TVShows = async ({ searchParams }) => {
   const { page } = await searchParams;
 
   return (
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
         <Movies
-          title={"Movies"}
+          title={"TV shows"}
           page={page}
-          url={"https://api.themoviedb.org/3/discover/movie"}
-          seeMorePath={"/movies"}
+          url={"https://api.themoviedb.org/3/discover/tv"}
+          seeMorePath={"/tvshows"}
         />
       </div>
     </main>
   );
 };
 
-export default MoviesType;
+export default TVShows;

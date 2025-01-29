@@ -16,20 +16,13 @@ const Header = () => {
         <ul className="grid gap-4 items-center ">
           <NavLinks />
         </ul>
-        <button className="flex mt-2 bg-blue-500 items-center gap-1 p-2 hover:shadow-md hover:shadow-blue-400 rounded-md text-white  transition-colors">
+        {/* <button className="flex mt-2 bg-blue-500 items-center gap-1 p-2 hover:shadow-md hover:shadow-blue-400 rounded-md text-white  transition-colors">
           Join Prime
-        </button>
+        </button> */}
       </Dropdown>
       <div className="flex items-center">
         <Link href={"/"}>
-          <Image
-            height={20}
-            width={100}
-            alt="prime logo"
-            src={
-              "https://m.media-amazon.com/images/G/01/digital/video/web/logo-min-remaster.png"
-            }
-          />
+          <h1 className="text-xl font-bold">ZFlix</h1>
         </Link>
         <ul className="md:flex gap-4 items-center hidden ml-9 ">
           <NavLinks />
@@ -41,7 +34,7 @@ const Header = () => {
           <SearchIcon className="size-5" />
         </button>
 
-        <Dropdown text={"En"} icon>
+        {/* <Dropdown text={"En"} icon>
           <ul className="grid gap-4 items-center ">
             <li className="flex items-center gap-1 p-2 hover:bg-white/80 rounded-lg hover:text-black duration-150 transition-colors cursor-pointer">
               English
@@ -50,14 +43,14 @@ const Header = () => {
               Myanmar
             </li>
           </ul>
-        </Dropdown>
+        </Dropdown> */}
 
-        <button className="flex items-center gap-1 p-1 hover:bg-white/80 rounded-full hover:text-black font-bold transition-colors">
+        {/* <button className="flex items-center gap-1 p-1 hover:bg-white/80 rounded-full hover:text-black font-bold transition-colors">
           <UserRoundIcon className="size-7" />
-        </button>
-        <button className="md:flex hidden bg-blue-500 items-center gap-1 p-2 hover:shadow-md hover:shadow-blue-400 rounded-md text-white  transition-colors">
+        </button> */}
+        {/* <button className="md:flex hidden bg-blue-500 items-center gap-1 p-2 hover:shadow-md hover:shadow-blue-400 rounded-md text-white  transition-colors">
           Join Prime
-        </button>
+        </button> */}
       </div>
     </header>
   );
