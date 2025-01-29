@@ -1,3 +1,4 @@
+import path from "path";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -5,6 +6,13 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "m.media-amazon.com",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
         port: "",
         pathname: "/**",
         search: "",
