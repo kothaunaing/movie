@@ -29,7 +29,7 @@ const MoviesPreviews = async ({ title, url, seeMorePath }) => {
                 seeMorePath={seeMorePath}
                 key={movie.id}
                 movie={movie}
-                imageClass={"h-[200px]"}
+                imageClass={"h-[230px]"}
               />
             );
           })}

@@ -1,4 +1,4 @@
-import MoviesPreviews from "./components/Movies/MoviesPrevies";
+import MoviesPreviews from "./components/Movies/MoviesPreviews";
 
 export default function Home() {
   return (
