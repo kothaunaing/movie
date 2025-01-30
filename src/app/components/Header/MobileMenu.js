@@ -1,8 +1,7 @@
 import { MenuIcon, XIcon } from "lucide-react";
 import React, { useState } from "react";
 import ZFlixLogo from "./ZFlixLogo";
-import Link from "next/link";
-import clsx from "clsx";
+
 import NavLinksMobile from "./NavLinksMobile";
 
 const MenuButton = ({ icon, handleClick }) => {
@@ -35,7 +34,7 @@ const MobileMenu = () => {
             </div>
             <div className="">
               <ul className="space-y-3 ">
-                <NavLinksMobile />
+                <NavLinksMobile handleClick={handleClick} />
               </ul>
             </div>
           </div>

@@ -1,10 +1,11 @@
 const clsx = require("clsx");
 const { default: Link } = require("next/link");
 
-const ListItem = ({ text, path, active }) => {
+const ListItem = ({ text, path, active, onClick }) => {
   return (
     <li>
       <Link
+        onClick={onClick ? onClick : () => {}}
         className={clsx(
           "flex items-center gap-1 p-2  duration-150 transition-colors cursor-pointer justify-center border-b-2 ",
           active

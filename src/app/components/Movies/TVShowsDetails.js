@@ -71,7 +71,7 @@ const Details = ({ movie, className }) => {
           );
         })}
       </div>
-      <p className="text-center mt-2 text-gray-400 md:text-left">
+      <p className="text-center italic mt-2 text-gray-400 md:text-left">
         {movie.tagline}
       </p>
     </div>

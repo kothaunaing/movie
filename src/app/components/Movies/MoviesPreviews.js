@@ -2,7 +2,7 @@ import { getMovies } from "../../../lib/moviesList";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import Movie from "./Movie";
+import Movie, { MovieSlider } from "./Movie";
 
 const MoviesPreviews = async ({ title, url, seeMorePath }) => {
   try {
@@ -18,7 +18,7 @@ const MoviesPreviews = async ({ title, url, seeMorePath }) => {
             <ChevronRightIcon className="size-5" />
           </Link>
         </h1>
-        <div
+        {/* <div
           style={{ scrollbarWidth: "none" }}
           className="mt-4 flex overflow-x-auto md:overflow-auto space-x-4 scrollbar-hide  gap-1 "
         >
@@ -33,7 +33,8 @@ const MoviesPreviews = async ({ title, url, seeMorePath }) => {
               />
             );
           })}
-        </div>
+        </div> */}
+        <MovieSlider seeMorePath={seeMorePath} movies={movies} />
       </section>
     );
   } catch (error) {

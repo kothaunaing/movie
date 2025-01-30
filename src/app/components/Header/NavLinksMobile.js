@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 import Accordion from "./Accordion";
 import useActive from "../../../lib/useActive";
 
-const NavLinksMobile = () => {
+const NavLinksMobile = ({ handleClick }) => {
   const {
     isHomeActive,
     isMoviesActive,
@@ -17,30 +17,54 @@ const NavLinksMobile = () => {
 
   return (
     <>
-      <ListItem path={"/"} text={"Home"} active={isHomeActive} />
+      <ListItem
+        onClick={handleClick}
+        path={"/"}
+        text={"Home"}
+        active={isHomeActive}
+      />
 
       <Accordion text={"Movies"}>
-        <ListItem path={"/movies"} text={"Popular"} active={isMoviesActive} />
         <ListItem
+          onClick={handleClick}
+          path={"/movies"}
+          text={"Popular"}
+          active={isMoviesActive}
+        />
+        <ListItem
+          onClick={handleClick}
           path={"/movies/now-playing"}
           text={"Now Playing"}
           active={isNowPlayingActive}
         />
         <ListItem
+          onClick={handleClick}
           path={"/movies/upcoming"}
           text={"Upcoming"}
           active={isUpComingActive}
         />
         <ListItem
+          onClick={handleClick}
           path={"/movies/top-rated"}
           text={"Top Rated"}
           active={isMoviesTopRatedActive}
         />
       </Accordion>
       <Accordion text={"TV shows"}>
-        <ListItem path={"/tvshows"} text={"Popular"} active={isTVActive} />
-        <ListItem path={"/tvshows/ontv"} text={"On TV"} active={isOnTvActive} />
         <ListItem
+          onClick={handleClick}
+          path={"/tvshows"}
+          text={"Popular"}
+          active={isTVActive}
+        />
+        <ListItem
+          onClick={handleClick}
+          path={"/tvshows/ontv"}
+          text={"On TV"}
+          active={isOnTvActive}
+        />
+        <ListItem
+          onClick={handleClick}
           path={"/tvshows/top-rated"}
           text={"Top Rated"}
           active={isTvTopRatedActive}

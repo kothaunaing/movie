@@ -10,7 +10,7 @@ const Dropdown = ({ children, icon, text, className }) => {
           <ChevronDownIcon className="size-5 group-hover:rotate-180 transition-transform duration-150" />
         )}
       </button>
-      <div className="absolute top-[80%] backdrop-blur-md bg-black/70  rounded-md p-4 hidden group-hover:block">
+      <div className="absolute top-[80%]  bg-black/70 rounded-md p-4 hidden group-hover:block backdrop-blur-lg">
         {children}
       </div>
     </div>

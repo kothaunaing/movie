@@ -1,9 +1,7 @@
 import clsx from "clsx";
 import { getImagesById } from "lib/moviesList";
-import Link from "next/link";
 import React from "react";
-
-const baseURL = "https://image.tmdb.org/t/p/w500";
+import ScreenShotSlider from "./ScreenShotSlider";
 
 const MovieImages = async ({ url, tab }) => {
   const images = await getImagesById(url);
@@ -19,20 +17,7 @@ const MovieImages = async ({ url, tab }) => {
           Screenshots
         </h1>
       </div>
-      <div
-        style={{ scrollbarWidth: "none" }}
-        className="flex overflow-auto mt-4 m-2 gap-2"
-      >
-        {images.backdrops.map((image) => {
-          return (
-            <img
-              key={image.file_path}
-              className="h-[180px] rounded-lg flex-shrink-0"
-              src={baseURL + image.file_path}
-            />
-          );
-        })}
-      </div>
+      <ScreenShotSlider images={images} />
     </div>
   );
 };

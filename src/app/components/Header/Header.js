@@ -1,12 +1,10 @@
 "use client";
 
-import { SearchIcon, UserRoundIcon } from "lucide-react";
-import Image from "next/image";
+import { SearchIcon } from "lucide-react";
+
 import Link from "next/link";
 import React from "react";
-import AppIcon from "./AppIcon";
-import Dropdown from "./Dropdown";
-import clsx from "clsx";
+
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import ZFlixLogo from "./ZFlixLogo";
