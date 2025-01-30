@@ -1,14 +1,20 @@
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const baseURL = "https://image.tmdb.org/t/p/w500";
+const baseURL = "https://image.tmdb.org/t/p/w780";
 
 const Movie = ({ movie, seeMorePath, className, imageClass }) => {
+  console.log(movie);
+
   return (
     <div className={clsx("group relative overflow-hidden", className)}>
-      <Link href={seeMorePath + "/" + movie.id}>
+      <div className="absolute bottom-2 right-2 z-10">
+        <span className="bg-black/70 p-2 rounded-full size-10">
+          {(movie.vote_average * 10).toFixed("0")}%
+        </span>
+      </div>
+      <Link href={seeMorePath + "/sm/" + movie.id}>
         <img
           className={clsx(
             "rounded-md group-hover:scale-[1.5] transition-transform duration-150",

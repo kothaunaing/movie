@@ -1,9 +1,9 @@
 import React from "react";
-import Dropdown from "./Dropdown";
 import ListItem from "./ListItem";
+import Accordion from "./Accordion";
 import useActive from "../../../lib/useActive";
 
-const NavLinks = () => {
+const NavLinksMobile = () => {
   const {
     isHomeActive,
     isMoviesActive,
@@ -17,7 +17,9 @@ const NavLinks = () => {
 
   return (
     <>
-      <Dropdown text={"Movies"} icon>
+      <ListItem path={"/"} text={"Home"} active={isHomeActive} />
+
+      <Accordion text={"Movies"}>
         <ListItem path={"/movies"} text={"Popular"} active={isMoviesActive} />
         <ListItem
           path={"/movies/now-playing"}
@@ -34,8 +36,8 @@ const NavLinks = () => {
           text={"Top Rated"}
           active={isMoviesTopRatedActive}
         />
-      </Dropdown>
-      <Dropdown text={"TV shows"} icon>
+      </Accordion>
+      <Accordion text={"TV shows"}>
         <ListItem path={"/tvshows"} text={"Popular"} active={isTVActive} />
         <ListItem path={"/tvshows/ontv"} text={"On TV"} active={isOnTvActive} />
         <ListItem
@@ -43,9 +45,9 @@ const NavLinks = () => {
           text={"Top Rated"}
           active={isTvTopRatedActive}
         />
-      </Dropdown>
+      </Accordion>
     </>
   );
 };
 
-export default NavLinks;
+export default NavLinksMobile;

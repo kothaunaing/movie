@@ -17,7 +17,7 @@ const TVShows = async ({ searchParams }) => {
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
         <Movies
-          title={"TV shows"}
+          title={"Popular TV shows"}
           page={page}
           url={"https://api.themoviedb.org/3/discover/tv"}
           seeMorePath={"/tvshows"}

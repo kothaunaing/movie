@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const baseURL = "https://image.tmdb.org/t/p/w500";
+const baseURL = "https://image.tmdb.org/t/p/original";
 
 const TVShowsDetailsComponent = ({ movie }) => {
   console.log(movie);
@@ -20,7 +20,7 @@ const TVShowsDetailsComponent = ({ movie }) => {
       </div>
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />
       <img
-        className=" w-full h-full object-cover object-top absolute inset-0 z-[-2] shadow-md shadow-black rounded-md"
+        className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md"
         src={baseURL + movie.backdrop_path}
       />
     </div>

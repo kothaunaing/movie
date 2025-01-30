@@ -35,8 +35,8 @@ const Pagination = ({ data, seeMorePath }) => {
             className={clsx(
               "p-2 px-3 rounded-md flex items-center justify-center",
               currentPage === 1
-                ? "bg-blue-800"
-                : "bg-blue-500 hover:bg-opacity-80"
+                ? "bg-gray-800"
+                : "bg-gray-500 hover:bg-opacity-80"
             )}
             href={`${seeMorePath}?page=1`}
           >
@@ -49,10 +49,10 @@ const Pagination = ({ data, seeMorePath }) => {
           <li key={`page-${p}`}>
             <Link
               className={clsx(
-                "p-2 px-3 rounded-md flex items-center justify-center",
+                "p-2 px-3 rounded-md flex items-center justify-center font-bold",
                 p === currentPage
-                  ? "bg-blue-800"
-                  : "bg-blue-500 hover:bg-opacity-80"
+                  ? "bg-gray-800"
+                  : "bg-gray-500 hover:bg-opacity-80"
               )}
               href={`${seeMorePath}?page=${p}`}
             >

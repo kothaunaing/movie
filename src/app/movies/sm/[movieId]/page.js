@@ -1,5 +1,5 @@
-import { getMovieById } from "../../../lib/moviesList";
-import MovieDetailsComponent from "../../components/Movies/MovieDetailsComponent";
+import { getMovieById } from "../../../../lib/moviesList";
+import MovieDetailsComponent from "../../../components/Movies/MovieDetailsComponent";
 
 export async function generateMetadata({ params }) {
   const { movieId } = await params;
