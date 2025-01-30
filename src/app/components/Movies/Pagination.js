@@ -22,10 +22,16 @@ function getPaginationPages(currentPage, totalPages) {
   return pages;
 }
 
-const Pagination = ({ data }) => {
+const Pagination = ({ data, query }) => {
   const currentPage = data.page;
   const totalPages = data.total_pages;
   const paginations = getPaginationPages(currentPage, totalPages);
+
+  const getPath = (p) => {
+    return query
+      ? `?query=${encodeURIComponent(query)}&page=${p}`
+      : `?page=${p}`;
+  };
 
   return (
     <ul className="flex gap-2 justify-center mt-4">
@@ -36,7 +42,9 @@ const Pagination = ({ data }) => {
               "p-2 px-3 rounded-md flex items-center justify-center font-bold drop-shadow-lg shadow-white border border-white bg-black ",
               currentPage === 1 ? "bg-blue-800" : "hover:bg-opacity-70"
             )}
-            href={`?page=1`}
+            href={
+              query ? `?query=${encodeURIComponent(query)}&page=1` : "?page=1"
+            }
           >
             1
           </Link>
@@ -50,7 +58,7 @@ const Pagination = ({ data }) => {
                 "p-2 px-3 rounded-md flex items-center justify-center font-bold drop-shadow-lg shadow-white border border-white bg-black ",
                 p === currentPage ? "bg-blue-800" : "hover:bg-opacity-70"
               )}
-              href={`?page=${p}`}
+              href={getPath(p)}
             >
               {p}
             </Link>

@@ -31,12 +31,12 @@ export const MovieSlider = ({ movies, seeMorePath }) => {
         style={{ scrollbarWidth: "none" }}
         className="mt-4 flex overflow-x-auto md:overflow-auto space-x-4 scrollbar-hide  gap-1 "
       >
-        {movies.map((movie) => {
+        {movies.map((movie, index) => {
           return (
             <Movie
               className={"flex-shrink-0"}
               seeMorePath={seeMorePath}
-              key={movie.id}
+              key={movie.id + (movie?.name || movie?.title) + index}
               movie={movie}
               imageClass={"h-[230px]"}
             />

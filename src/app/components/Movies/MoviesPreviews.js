@@ -7,7 +7,7 @@ import Movie, { MovieSlider } from "./Movie";
 const MoviesPreviews = async ({ title, url, seeMorePath, showLink }) => {
   try {
     const data = await getMovies(url);
-    const movies = data?.results;
+    const movies = data?.results || data?.cast;
 
     return (
       <section className="">

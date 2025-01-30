@@ -1,11 +1,17 @@
-import { getMovies } from "../../../lib/moviesList";
+import { getMovies, searchMovie } from "../../../lib/moviesList";
 import React from "react";
 import Movie from "./Movie";
 import Pagination from "./Pagination";
 
-const Movies = async ({ title, seeMorePath, url, page }) => {
+const Movies = async ({ title, seeMorePath, url, page, search, query }) => {
   try {
-    const data = await getMovies(url, page);
+    let data;
+
+    if (search) {
+      data = await getMovies(url, page);
+    } else {
+      data = await searchMovie(url, page, query);
+    }
     const movies = data?.results;
 
     return (
@@ -31,7 +37,7 @@ const Movies = async ({ title, seeMorePath, url, page }) => {
             );
           })}
         </div>
-        <Pagination data={data} seeMorePath={seeMorePath} />
+        <Pagination query={query} data={data} seeMorePath={seeMorePath} />
       </div>
     );
   } catch (error) {

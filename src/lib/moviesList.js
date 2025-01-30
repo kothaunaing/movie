@@ -115,7 +115,31 @@ export async function getPersonById(url) {
   const options = {
     method: "GET",
     url,
-    params: { language: "en-US", page: page || 1 },
+    params: { language: "en-US" },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log("Error in getCreditsById: " + error.message);
+    return null;
+  }
+}
+export async function searchMovie(url, page, query) {
+  const options = {
+    method: "GET",
+    url,
+    params: {
+      include_adult: "false",
+      language: "en-US",
+      query,
+      page: page || "1",
+    },
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${apiKey}`,
