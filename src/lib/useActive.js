@@ -7,7 +7,7 @@ const useActive = () => {
   const isMoviesActive = pathname === "/movies";
   const isNowPlayingActive = pathname === "/movies/now-playing";
   const isUpComingActive = pathname === "/movies/upcoming";
-  const isMoviesTopRatedActive = pathname === "movies/top-rated";
+  const isMoviesTopRatedActive = pathname === "/movies/top-rated";
 
   const isTVActive = pathname === "/tvshows";
   const isOnTvActive = pathname === "/tvshows/ontv";

@@ -1,4 +1,5 @@
 import { getCreditsById } from "lib/moviesList";
+import Link from "next/link";
 import React from "react";
 
 const baseURL = "https://image.tmdb.org/t/p/w500";
@@ -13,12 +14,15 @@ const Cast = async ({ url }) => {
       <div className="flex overflow-auto gap-2">
         {data.cast.map((c) => {
           return (
-            <div
+            <Link
+              href={`/people/${c.id}`}
               key={c.id}
-              className={"relative flex-shrink-0 overflow-hidden"}
+              className={
+                "group relative flex-shrink-0 overflow-hidden rounded-md"
+              }
             >
               <img
-                className="h-[180px] w-full rounded-md"
+                className="h-[180px] w-full rounded-md group-hover:scale-125 duration-150 transition-transform"
                 src={baseURL + c.profile_path}
                 alt={c.name}
               />
@@ -26,7 +30,7 @@ const Cast = async ({ url }) => {
                 <p className="font-bold">{c.name}</p>
                 <p className="text-sm text-white italic">{c.character}</p>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

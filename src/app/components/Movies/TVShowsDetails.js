@@ -45,10 +45,10 @@ const TVShowsDetailsComponent = ({ movie }) => {
 const Details = ({ movie, className }) => {
   return (
     <div className={clsx("mt-2", className)}>
-      <h1 className="font-bold text-2xl  text-center p-2">
-        {movie?.title || movie?.name}
+      <h1 className=" p-2 font-bold text-2xl text-center md:text-left">
+        {movie?.name || movie?.title}
       </h1>
-      <div className="font-bold text-center">
+      <div className="font-bold text-center md:text-left">
         <span>
           {movie.number_of_seasons}{" "}
           {movie.number_of_seasons <= 1 ? "season" : "seasons"}
@@ -58,7 +58,7 @@ const Details = ({ movie, className }) => {
           {movie.number_of_episodes <= 1 ? "episode" : "episodes"}
         </span>
       </div>
-      <div className="space-x-2 text-center">
+      <div className="space-x-2 text-center md:text-left">
         {movie.genres.map((genre) => {
           return (
             <Link

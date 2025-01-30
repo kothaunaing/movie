@@ -7,13 +7,13 @@ import Link from "next/link";
 export async function generateMetadata({ params }) {
   const { movieId } = await params;
   const movie = await getMovieById(
-    `https://api.themoviedb.org/3/movie/${movieId}`
+    `https://api.themoviedb.org/3/tv/${movieId}`
   );
 
   return movie
     ? {
-        title: "ZFlix TV shows | " + movie.title,
-        description: "ZFlix TV shows | " + movie.title,
+        title: "ZFlix TV shows | " + (movie?.name || movie?.title),
+        description: "ZFlix TV shows | " + (movie?.name || movie?.title),
       }
     : {
         title: "ZFlix | TV show not found!",

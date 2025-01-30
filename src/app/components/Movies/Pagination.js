@@ -22,7 +22,7 @@ function getPaginationPages(currentPage, totalPages) {
   return pages;
 }
 
-const Pagination = ({ data, seeMorePath }) => {
+const Pagination = ({ data }) => {
   const currentPage = data.page;
   const totalPages = data.total_pages;
   const paginations = getPaginationPages(currentPage, totalPages);
@@ -33,12 +33,10 @@ const Pagination = ({ data, seeMorePath }) => {
         <li>
           <Link
             className={clsx(
-              "p-2 px-3 rounded-md flex items-center justify-center",
-              currentPage === 1
-                ? "bg-gray-800"
-                : "bg-gray-500 hover:bg-opacity-80"
+              "p-2 px-3 rounded-md flex items-center justify-center font-bold drop-shadow-lg shadow-white border border-white bg-black ",
+              currentPage === 1 ? "bg-blue-800" : "hover:bg-opacity-70"
             )}
-            href={`${seeMorePath}?page=1`}
+            href={`?page=1`}
           >
             1
           </Link>
@@ -49,12 +47,10 @@ const Pagination = ({ data, seeMorePath }) => {
           <li key={`page-${p}`}>
             <Link
               className={clsx(
-                "p-2 px-3 rounded-md flex items-center justify-center font-bold",
-                p === currentPage
-                  ? "bg-gray-800"
-                  : "bg-gray-500 hover:bg-opacity-80"
+                "p-2 px-3 rounded-md flex items-center justify-center font-bold drop-shadow-lg shadow-white border border-white bg-black ",
+                p === currentPage ? "bg-blue-800" : "hover:bg-opacity-70"
               )}
-              href={`${seeMorePath}?page=${p}`}
+              href={`?page=${p}`}
             >
               {p}
             </Link>

@@ -1,25 +1,25 @@
-import Movies from "app/components/Movies/Movies";
+import Movies from "@/app/components/Movies/Movies";
 import React from "react";
 
 export async function generateMetadata({ searchParams }) {
   const { page } = await searchParams;
 
   return {
-    title: page ? `Movies | Page ${page}` : "ZFlix | Popular Movies",
+    title: page ? `Movies | Page ${page}` : "ZFlix | Upcoming Movies",
     description: "Explore movies",
   };
 }
 
-const MoviesType = async ({ searchParams }) => {
+const NowPlaying = async ({ searchParams }) => {
   const { page } = await searchParams;
 
   return (
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
         <Movies
-          title={"Popular Movies"}
+          title={"Upcoming Movies"}
           page={page}
-          url={"https://api.themoviedb.org/3/movie/popular"}
+          url={"https://api.themoviedb.org/3/movie/upcoming"}
           seeMorePath={"/movies"}
         />
       </div>
@@ -27,4 +27,4 @@ const MoviesType = async ({ searchParams }) => {
   );
 };
 
-export default MoviesType;
+export default NowPlaying;

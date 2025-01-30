@@ -11,7 +11,7 @@ const Details = ({ movie, className }) => {
   return (
     <div className={clsx("mt-2 ", className)}>
       <h1 className="font-bold text-2xl text-center md:text-left">
-        {movie?.title || movie?.name}
+        {movie?.name || movie?.title}
       </h1>
       <div className="font-bold text-center md:text-left">
         <span>

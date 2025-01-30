@@ -12,8 +12,8 @@ export async function generateMetadata({ params }) {
 
   return movie
     ? {
-        title: "ZFlix Movies | " + movie.title,
-        description: "ZFlix Movies | " + movie.title,
+        title: "ZFlix Movies | " + (movie?.name || movie?.title),
+        description: "ZFlix Movies | " + (movie?.name || movie?.title),
       }
     : {
         title: "ZFlix | Movie not found!",
