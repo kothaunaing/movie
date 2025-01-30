@@ -1,19 +1,24 @@
+import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
+import { formatMinuteToHour, formatDate } from "@lib/utils";
+import MovieImages from "./MovieImages";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const Details = ({ movie }) => {
+const Details = ({ movie, className }) => {
   return (
-    <div className="mt-2">
-      <h1 className="md:hidden font-bold text-2xl   p-2">
+    <div className={clsx("mt-2 ", className)}>
+      <h1 className="font-bold text-2xl text-center md:text-left">
         {movie?.title || movie?.name}
       </h1>
-      <div className="font-bold text-center">
-        <span>{movie.release_date.split("-")[0]}</span>
-        <span className="ml-2">{movie.runtime}m</span>
+      <div className="font-bold text-center md:text-left">
+        <span>
+          {formatDate(movie.release_date).year} {" • "}{" "}
+        </span>
+        <span className="">{formatMinuteToHour(movie.runtime)}</span>
       </div>
-      <div className="space-x-2">
+      <div className="space-x-2 text-center md:text-left">
         {movie.genres.map((genre) => {
           return (
             <Link
@@ -26,29 +31,45 @@ const Details = ({ movie }) => {
           );
         })}
       </div>
+      <p className="text-center mt-2 text-gray-400 md:text-left">
+        {movie.tagline}
+      </p>
     </div>
   );
 };
 
 const MovieDetailsComponent = ({ movie }) => {
+  console.log(movie);
+
   return (
-    <div className="md:grid md:grid-cols-2 relative p-2">
-      <div className="mt-4 flex flex-col items-center ">
-        <img
-          src={baseURL + movie.poster_path}
-          className="h-[250px]  object-fit rounded-lg"
-        />
-        <Details movie={movie} />
-      </div>
-      <div className="mt-4">
-        <h1 className="font-bold text-xl mb-3">Overview</h1>
-        <p>{movie.overview}</p>
-      </div>
+    <div className="relative">
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />
-      <img
-        className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md"
-        src={baseURL + movie.backdrop_path}
-      />
+      <div className="md:grid md:grid-cols-2  p-2">
+        <div className="mt-4 flex flex-col items-center ">
+          <img
+            src={baseURL + movie.poster_path}
+            className="h-[250px] object-fit rounded-lg"
+          />
+          <Details movie={movie} className={"md:hidden"} />
+        </div>
+
+        <div className="mt-4 md:mt-0 ">
+          <Details movie={movie} className={"hidden md:block"} />
+          <h1 className="font-bold text-xl mb-3 md:mt-4">Overview</h1>
+          <p>{movie.overview}</p>
+        </div>
+
+        <img
+          className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md"
+          src={baseURL + movie.backdrop_path}
+        />
+      </div>
+      <div>
+        <h1 className="font-bold text-xl m-2">Images</h1>
+        <MovieImages
+          url={`https://api.themoviedb.org/3/movie/${movie.id}/images`}
+        />
+      </div>
     </div>
   );
 };

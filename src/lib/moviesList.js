@@ -19,9 +19,15 @@ export async function getMovies(url, page) {
     },
   };
 
-  const response = await axios.request(options);
+  try {
+    const response = await axios.request(options);
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log("Error in getMovies: " + error.message);
+
+    return null;
+  }
 }
 
 export async function getMovieById(url) {
@@ -37,6 +43,30 @@ export async function getMovieById(url) {
     },
   };
 
-  const response = await axios.request(options);
-  return response.data;
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log("Error in getMovieById: " + error.message);
+    return null;
+  }
+}
+
+export async function getImagesById(url) {
+  const options = {
+    method: "GET",
+    url,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log("Error in getImagesById: " + error.message);
+    return null;
+  }
 }

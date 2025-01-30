@@ -1,5 +1,8 @@
 import { getMovieById } from "../../../../lib/moviesList";
+import NotFound from "@app/components/Movies/NotFound";
 import MovieDetailsComponent from "../../../components/Movies/MovieDetailsComponent";
+import { InfoIcon } from "lucide-react";
+import Link from "next/link";
 
 export async function generateMetadata({ params }) {
   const { movieId } = await params;
@@ -7,10 +10,15 @@ export async function generateMetadata({ params }) {
     `https://api.themoviedb.org/3/movie/${movieId}`
   );
 
-  return {
-    title: "ZFlix Movies | " + movie.title,
-    description: "ZFlix Movies | " + movie.title,
-  };
+  return movie
+    ? {
+        title: "ZFlix Movies | " + movie.title,
+        description: "ZFlix Movies | " + movie.title,
+      }
+    : {
+        title: "ZFlix | Movie not found!",
+        description: "ZFlix | Movie not found!",
+      };
 }
 
 const MovieDetails = async ({ params }) => {
@@ -23,7 +31,17 @@ const MovieDetails = async ({ params }) => {
     return (
       <div className="max-w-3xl mx-auto">
         <div className="">
-          <MovieDetailsComponent movie={movie} />
+          {movie ? (
+            <MovieDetailsComponent movie={movie} />
+          ) : (
+            <NotFound>
+              <InfoIcon className="mb-2" />
+              <p>404 | No movie found!</p>
+              <Link className="font-bold underline mt-2" href={"/tvshows"}>
+                Explore movies
+              </Link>
+            </NotFound>
+          )}
         </div>
       </div>
     );
