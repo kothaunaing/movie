@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Movie, { MovieSlider } from "./Movie";
 
-const MoviesPreviews = async ({ title, url, seeMorePath }) => {
+const MoviesPreviews = async ({ title, url, seeMorePath, showLink }) => {
   try {
     const data = await getMovies(url);
     const movies = data?.results;
@@ -13,10 +13,12 @@ const MoviesPreviews = async ({ title, url, seeMorePath }) => {
       <section className="">
         <h1 className="flex gap-3">
           <span className="font-bold">{title}</span>
-          <Link className="flex gap-1 items-center" href={seeMorePath}>
-            See more
-            <ChevronRightIcon className="size-5" />
-          </Link>
+          {showLink && (
+            <Link className="flex gap-1 items-center" href={seeMorePath}>
+              See more
+              <ChevronRightIcon className="size-5" />
+            </Link>
+          )}
         </h1>
         {/* <div
           style={{ scrollbarWidth: "none" }}

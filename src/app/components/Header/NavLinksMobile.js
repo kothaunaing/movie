@@ -13,6 +13,7 @@ const NavLinksMobile = ({ handleClick }) => {
     isTVActive,
     isOnTvActive,
     isTvTopRatedActive,
+    isPeopleActive,
   } = useActive();
 
   return (
@@ -70,6 +71,12 @@ const NavLinksMobile = ({ handleClick }) => {
           active={isTvTopRatedActive}
         />
       </Accordion>
+      <ListItem
+        onClick={handleClick}
+        path={"/people"}
+        text={"People"}
+        active={isPeopleActive}
+      />
     </>
   );
 };

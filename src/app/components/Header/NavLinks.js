@@ -13,6 +13,7 @@ const NavLinks = () => {
     isTVActive,
     isOnTvActive,
     isTvTopRatedActive,
+    isPeopleActive,
   } = useActive();
 
   return (
@@ -44,6 +45,7 @@ const NavLinks = () => {
           active={isTvTopRatedActive}
         />
       </Dropdown>
+      <ListItem path={"/people"} text={"People"} active={isPeopleActive} />
     </>
   );
 };

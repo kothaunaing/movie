@@ -16,3 +16,5 @@ export function formatDate(date) {
     day,
   };
 }
+
+export const baseURL = "https://image.tmdb.org/t/p/w500";

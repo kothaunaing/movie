@@ -9,11 +9,13 @@ export default function Home() {
             title={"Top Movies"}
             url={"https://api.themoviedb.org/3/movie/popular"}
             seeMorePath={"/movies"}
+            showLink
           />
           <MoviesPreviews
             title={"Top TV"}
             url={"https://api.themoviedb.org/3/tv/popular"}
             seeMorePath={"/tvshows"}
+            showLink
           />
         </div>
       </main>

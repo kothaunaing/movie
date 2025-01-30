@@ -3,6 +3,7 @@ import React from "react";
 import MovieImages from "./MovieImages";
 import Cast from "./Cast";
 import clsx from "clsx";
+import MoviesPreviews from "./MoviesPreviews";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -37,6 +38,13 @@ const TVShowsDetailsComponent = ({ movie }) => {
       </div>
       <div className="mt-4">
         <Cast url={`https://api.themoviedb.org/3/tv/${movie.id}/credits`} />
+      </div>
+      <div className="mt-9 m-2">
+        <MoviesPreviews
+          title={"Recommended TV shows"}
+          url={`https://api.themoviedb.org/3/tv/${movie.id}/recommendations`}
+          seeMorePath={"/tvshows"}
+        />
       </div>
     </div>
   );
