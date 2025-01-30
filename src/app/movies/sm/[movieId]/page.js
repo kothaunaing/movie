@@ -21,9 +21,10 @@ export async function generateMetadata({ params }) {
       };
 }
 
-const MovieDetails = async ({ params }) => {
+const MovieDetails = async ({ params, searchParams }) => {
   try {
     const { movieId } = await params;
+    const { tab } = await searchParams;
     const movie = await getMovieById(
       `https://api.themoviedb.org/3/movie/${movieId}`
     );
@@ -32,7 +33,7 @@ const MovieDetails = async ({ params }) => {
       <div className="max-w-3xl mx-auto">
         <div className="">
           {movie ? (
-            <MovieDetailsComponent movie={movie} />
+            <MovieDetailsComponent tab={tab} movie={movie} />
           ) : (
             <NotFound>
               <InfoIcon className="mb-2" />

@@ -10,7 +10,7 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
   return (
     <div className={clsx("group relative overflow-hidden", className)}>
       <div className="absolute bottom-2 right-2 z-10">
-        <span className="bg-black/70 p-2 rounded-full size-10">
+        <span className="bg-black/70 font-bold p-2 rounded-full size-10">
           {(movie.vote_average * 10).toFixed("0")}%
         </span>
       </div>

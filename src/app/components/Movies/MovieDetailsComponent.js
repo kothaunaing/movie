@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { formatMinuteToHour, formatDate } from "@lib/utils";
 import MovieImages from "./MovieImages";
+import Cast from "./Cast";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -38,9 +39,7 @@ const Details = ({ movie, className }) => {
   );
 };
 
-const MovieDetailsComponent = ({ movie }) => {
-  console.log(movie);
-
+const MovieDetailsComponent = ({ movie, tab }) => {
   return (
     <div className="relative">
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />
@@ -48,7 +47,7 @@ const MovieDetailsComponent = ({ movie }) => {
         <div className="mt-4 flex flex-col items-center ">
           <img
             src={baseURL + movie.poster_path}
-            className="h-[250px] object-fit rounded-lg"
+            className="h-[250px] object-fit rounded-lg shadow-md shadow-white/40"
           />
           <Details movie={movie} className={"md:hidden"} />
         </div>
@@ -60,15 +59,18 @@ const MovieDetailsComponent = ({ movie }) => {
         </div>
 
         <img
-          className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md"
+          className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md "
           src={baseURL + movie.backdrop_path}
         />
       </div>
       <div>
-        <h1 className="font-bold text-xl m-2">Images</h1>
         <MovieImages
+          tab={tab}
           url={`https://api.themoviedb.org/3/movie/${movie.id}/images`}
         />
+      </div>
+      <div className="mt-4">
+        <Cast url={`https://api.themoviedb.org/3/movie/${movie.id}/credits`} />
       </div>
     </div>
   );
