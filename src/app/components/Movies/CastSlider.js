@@ -40,7 +40,15 @@ const CastSlider = ({ data }) => {
                 "group relative flex-shrink-0 overflow-hidden rounded-md"
               }
             >
-              <Image
+              {/* <Image
+                loading={"lazy"}
+                className="h-[180px] w-full rounded-md group-hover:scale-125 duration-150 transition-transform"
+                src={baseURL + c.profile_path}
+                alt={c.name}
+                height={180}
+                width={100}
+              /> */}
+              <img
                 loading={"lazy"}
                 className="h-[180px] w-full rounded-md group-hover:scale-125 duration-150 transition-transform"
                 src={baseURL + c.profile_path}

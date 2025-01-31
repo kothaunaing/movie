@@ -1,3 +1,4 @@
+import Movies from "./components/Movies/Movies";
 import MoviesPreviews from "./components/Movies/MoviesPreviews";
 
 export default function Home() {
@@ -16,6 +17,10 @@ export default function Home() {
             url={"https://api.themoviedb.org/3/tv/popular"}
             seeMorePath={"/tvshows"}
             showLink
+          />
+          <MoviesPreviews
+            title={"Trending"}
+            url={"https://api.themoviedb.org/3/trending/all/day"}
           />
         </div>
       </main>

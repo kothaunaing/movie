@@ -1,14 +1,22 @@
 import React from "react";
-import Movies from "../components/Movies/Movies";
+import Movies from "../../components/Movies/Movies";
 
 export async function generateMetadata({ searchParams }) {
   const { page, query } = await searchParams;
 
+  let title = "";
+
+  if (query) {
+    title = page
+      ? `Results for ${query} | Page ${page} `
+      : `Results for ${query}`;
+  } else {
+    title = "ZFlix | Search";
+  }
+
   return {
-    title: query ? `Results for ${query} | Page ${page}` : "ZFlix | Search",
-    description: page
-      ? `Results for ${query} | Page ${page}`
-      : "ZFlix | Search",
+    title,
+    description: title,
   };
 }
 
@@ -25,7 +33,7 @@ const Search = async ({ searchParams }) => {
             </p>
           }
           page={page}
-          url={"https://api.themoviedb.org/3/search/movie"}
+          url={"https://api.themoviedb.org/3/search/multi"}
           seeMorePath={"/movies"}
           query={query}
         />

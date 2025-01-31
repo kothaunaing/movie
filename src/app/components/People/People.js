@@ -14,7 +14,15 @@ const People = ({ people }) => {
             key={person.profile_path + index}
             className="flex-shrink-0 relative rounded-lg overflow-hidden group"
           >
-            <Image
+            {/* <Image
+              loading="lazy"
+              className=" w-full h-full object-contain object-top group-hover:scale-125 transition-transform duration-150"
+              src={baseURL + person.profile_path}
+              alt={person.name}
+              height={100}
+              width={100}
+            /> */}
+            <img
               loading="lazy"
               className=" w-full h-full object-contain object-top group-hover:scale-125 transition-transform duration-150"
               src={baseURL + person.profile_path}

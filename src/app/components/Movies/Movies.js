@@ -14,6 +14,8 @@ const Movies = async ({ title, seeMorePath, url, page, search, query }) => {
     }
     const movies = data?.results;
 
+    console.log(movies);
+
     return (
       <div>
         <h1 className="flex gap-3">

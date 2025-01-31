@@ -56,6 +56,9 @@ export const MovieSlider = ({ movies, seeMorePath }) => {
 };
 
 const Movie = ({ movie, seeMorePath, className, imageClass }) => {
+  const isMovie = movie?.media_type === "movie";
+  const path = isMovie ? "/movies" : "/tvshows";
+
   return (
     <div className={clsx("group relative overflow-hidden", className)}>
       <div className="absolute bottom-2 right-2 z-10">
@@ -63,8 +66,14 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
           {(movie.vote_average * 10).toFixed("0")}%
         </span>
       </div>
-      <Link href={seeMorePath + "/sm/" + movie.id}>
-        <Image
+      <Link
+        href={
+          movie?.media_type
+            ? path + "/m/" + movie.id
+            : seeMorePath + "/m/" + movie.id
+        }
+      >
+        {/* <Image
           loading="lazy"
           className={clsx(
             "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
@@ -74,8 +83,8 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
           width={150}
           alt={movie?.name || movie?.title}
           src={baseURL + movie.poster_path}
-        />
-        {/* <img
+        /> */}
+        <img
           className={clsx(
             "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
             imageClass
@@ -84,12 +93,12 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
           width={150}
           alt={movie?.name || movie?.title}
           src={baseURL + movie.poster_path}
-        /> */}
+        />
 
         <div className="absolute hidden inset-0 group-hover:flex bg-black/60 justify-center p-2">
           <div>
             <p className="font-bold">{movie?.name || movie?.title}</p>
-            <p className="text-sm">{movie.overview.slice(0, 70)}...</p>
+            {<p className="text-sm">{movie?.overview?.slice(0, 70)}...</p>}
           </div>
         </div>
       </Link>

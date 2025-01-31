@@ -154,3 +154,28 @@ export async function searchMovie(url, page, query) {
     return null;
   }
 }
+
+export async function searchPeople(url, page, query) {
+  const options = {
+    method: "GET",
+    url,
+    params: {
+      include_adult: "false",
+      language: "en-US",
+      query,
+      page: page || "1",
+    },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log("Error in getCreditsById: " + error.message);
+    return null;
+  }
+}
