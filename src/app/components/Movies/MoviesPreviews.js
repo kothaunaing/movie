@@ -22,18 +22,19 @@ const MoviesPreviews = async ({
     }
     const movies = data?.results || data?.cast;
 
-    return (
-      <section className="">
-        <h1 className="flex gap-3">
-          <span className="font-bold">{title}</span>
-          {showLink && (
-            <Link className="flex gap-1 items-center" href={seeMorePath}>
-              See more
-              <ChevronRightIcon className="size-5" />
-            </Link>
-          )}
-        </h1>
-        {/* <div
+    if (movies.length) {
+      return (
+        <section className="">
+          <h1 className="flex gap-3">
+            <span className="font-bold">{title}</span>
+            {showLink && (
+              <Link className="flex gap-1 items-center" href={seeMorePath}>
+                See more
+                <ChevronRightIcon className="size-5" />
+              </Link>
+            )}
+          </h1>
+          {/* <div
           style={{ scrollbarWidth: "none" }}
           className="mt-4 flex overflow-x-auto md:overflow-auto space-x-4 scrollbar-hide  gap-1 "
         >
@@ -49,13 +50,14 @@ const MoviesPreviews = async ({
             );
           })}
         </div> */}
-        <MovieSlider
-          seeMorePath={seeMorePath}
-          basePath={basePath}
-          movies={movies}
-        />
-      </section>
-    );
+          <MovieSlider
+            seeMorePath={seeMorePath}
+            basePath={basePath}
+            movies={movies}
+          />
+        </section>
+      );
+    }
   } catch (error) {
     console.log("Error in Movies: " + error.message);
     return (

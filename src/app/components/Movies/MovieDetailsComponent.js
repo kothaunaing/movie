@@ -5,6 +5,7 @@ import { formatMinuteToHour, formatDate } from "@lib/utils";
 import MovieImages from "./MovieImages";
 import Cast from "./Cast";
 import MoviesPreviews from "./MoviesPreviews";
+import Videos from "./Videos";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -72,8 +73,19 @@ const MovieDetailsComponent = ({ movie, tab }) => {
           url={`https://api.themoviedb.org/3/movie/${movie.id}/images`}
         />
       </div>
+      <div className="mt-9 m-2">
+        <Videos url={`https://api.themoviedb.org/3/movie/${movie.id}/videos`} />
+      </div>
       <div className="mt-4">
         <Cast url={`https://api.themoviedb.org/3/movie/${movie.id}/credits`} />
+      </div>
+      <div className="mt-9 m-2">
+        <MoviesPreviews
+          title={"Similar Movies"}
+          url={`https://api.themoviedb.org/3/movie/${movie.id}/similar`}
+          seeMorePath={"/movies"}
+          basePath={"/movies"}
+        />
       </div>
       <div className="mt-9 m-2">
         <MoviesPreviews
