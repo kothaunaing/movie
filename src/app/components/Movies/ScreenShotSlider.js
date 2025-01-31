@@ -34,6 +34,7 @@ const ScreenShotSlider = ({ images }) => {
         {images.backdrops.map((image) => {
           return (
             <Image
+              loading="lazy"
               key={image.file_path}
               className="h-[180px] rounded-lg flex-shrink-0 "
               src={baseURL + image.file_path}

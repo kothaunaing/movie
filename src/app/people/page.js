@@ -23,8 +23,6 @@ const PopularPeople = async ({ searchParams }) => {
     page
   );
 
-  console.log(data);
-
   return (
     <main className="max-w-4xl mx-auto">
       <div className="m-2">

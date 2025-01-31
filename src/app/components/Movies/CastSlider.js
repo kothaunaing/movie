@@ -41,6 +41,7 @@ const CastSlider = ({ data }) => {
               }
             >
               <Image
+                loading={"lazy"}
                 className="h-[180px] w-full rounded-md group-hover:scale-125 duration-150 transition-transform"
                 src={baseURL + c.profile_path}
                 alt={c.name}

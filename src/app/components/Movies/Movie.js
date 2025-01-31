@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useSlider from "lib/useSlider";
 
-const baseURL = "https://image.tmdb.org/t/p/w780";
+const baseURL = "https://image.tmdb.org/t/p/w500";
 
 export const MovieSlider = ({ movies, seeMorePath }) => {
   const {
@@ -65,6 +65,7 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
       </div>
       <Link href={seeMorePath + "/sm/" + movie.id}>
         <Image
+          loading="lazy"
           className={clsx(
             "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
             imageClass
@@ -74,6 +75,16 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
           alt={movie?.name || movie?.title}
           src={baseURL + movie.poster_path}
         />
+        {/* <img
+          className={clsx(
+            "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
+            imageClass
+          )}
+          height={230}
+          width={150}
+          alt={movie?.name || movie?.title}
+          src={baseURL + movie.poster_path}
+        /> */}
 
         <div className="absolute hidden inset-0 group-hover:flex bg-black/60 justify-center p-2">
           <div>

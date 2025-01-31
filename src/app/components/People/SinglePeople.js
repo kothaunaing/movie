@@ -24,6 +24,7 @@ const SinglePeople = ({ person }) => {
       <div className="md:grid md:grid-cols-2 items-start">
         <div className="flex justify-center flex-col items-center text-center">
           <Image
+            loading="lazy"
             className="rounded-md"
             src={baseURL + person.profile_path}
             height={150}

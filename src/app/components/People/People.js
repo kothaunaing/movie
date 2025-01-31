@@ -15,6 +15,7 @@ const People = ({ people }) => {
             className="flex-shrink-0 relative rounded-lg overflow-hidden group"
           >
             <Image
+              loading="lazy"
               className=" w-full h-full object-contain object-top group-hover:scale-125 transition-transform duration-150"
               src={baseURL + person.profile_path}
               alt={person.name}
