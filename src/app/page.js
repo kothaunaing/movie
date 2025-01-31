@@ -7,6 +7,12 @@ export default function Home() {
       <main className="max-w-4xl mx-auto">
         <div className="m-2 space-y-8">
           <MoviesPreviews
+            title={"Trending"}
+            url={"https://api.themoviedb.org/3/trending/all/day"}
+            showLink
+            seeMorePath={"/trending"}
+          />
+          <MoviesPreviews
             title={"Top Movies"}
             url={"https://api.themoviedb.org/3/movie/popular"}
             seeMorePath={"/movies"}
@@ -19,10 +25,6 @@ export default function Home() {
             seeMorePath={"/tvshows"}
             basePath={"/tvshows"}
             showLink
-          />
-          <MoviesPreviews
-            title={"Trending"}
-            url={"https://api.themoviedb.org/3/trending/all/day"}
           />
         </div>
       </main>

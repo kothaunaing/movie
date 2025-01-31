@@ -18,7 +18,7 @@ const Movies = async ({ newData, title, seeMorePath, url, page, query }) => {
     return (
       <div>
         <h1 className="flex gap-3">
-          <span className="font-bold text-lg" id={"movies"}>
+          <span className="font-bold text-xl" id={"movies"}>
             {title}
           </span>
         </h1>
