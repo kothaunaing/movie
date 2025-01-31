@@ -5,7 +5,9 @@ export async function generateMetadata({ searchParams }) {
   const { page } = await searchParams;
 
   return {
-    title: page ? `TV shows | On TV | Page ${page}` : "ZFlix | On TV",
+    title: page
+      ? `TV shows | Airing Today | Page ${page}`
+      : "ZFlix | Airing Today",
     description: "Explore TV shows",
   };
 }
@@ -17,9 +19,9 @@ const TVShows = async ({ searchParams }) => {
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
         <Movies
-          title={"On TV"}
+          title={"Airing Today"}
           page={page}
-          url={"https://api.themoviedb.org/3/tv/on_the_air"}
+          url={"https://api.themoviedb.org/3/tv/airing_today"}
           seeMorePath={"/tvshows"}
         />
       </div>

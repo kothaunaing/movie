@@ -17,6 +17,7 @@ const useActive = () => {
 
   const isMovieGenresActive = pathname === "/movies/genres";
   const isTVGenresActive = pathname === "/tvshows/genres";
+  const isTVAiringTodayActive = pathname === "/tvshows/airing-today";
 
   return {
     isHomeActive,
@@ -30,6 +31,7 @@ const useActive = () => {
     isPeopleActive,
     isMovieGenresActive,
     isTVGenresActive,
+    isTVAiringTodayActive,
   };
 };
 

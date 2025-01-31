@@ -16,6 +16,7 @@ const NavLinksMobile = ({ handleClick }) => {
     isPeopleActive,
     isMovieGenresActive,
     isTVGenresActive,
+    isTVAiringTodayActive,
   } = useActive();
 
   return (
@@ -54,6 +55,11 @@ const NavLinksMobile = ({ handleClick }) => {
         />
       </Accordion>
       <Accordion text={"TV shows"}>
+        <ListItem
+          path={"/tvshows/airing-today"}
+          text={"Airing Today"}
+          active={isTVAiringTodayActive}
+        />
         <ListItem
           onClick={handleClick}
           path={"/tvshows"}

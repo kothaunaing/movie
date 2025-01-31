@@ -16,6 +16,7 @@ const NavLinks = () => {
     isPeopleActive,
     isMovieGenresActive,
     isTVGenresActive,
+    isTVAiringTodayActive,
   } = useActive();
 
   return (
@@ -39,6 +40,11 @@ const NavLinks = () => {
         />
       </Dropdown>
       <Dropdown text={"TV shows"} icon>
+        <ListItem
+          path={"/tvshows/airing-today"}
+          text={"Airing Today"}
+          active={isTVAiringTodayActive}
+        />
         <ListItem path={"/tvshows"} text={"Popular"} active={isTVActive} />
         <ListItem path={"/tvshows/ontv"} text={"On TV"} active={isOnTvActive} />
         <ListItem
