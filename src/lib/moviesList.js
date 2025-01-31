@@ -139,6 +139,7 @@ export async function searchMovie(url, page, query) {
       language: "en-US",
       query,
       page: page || "1",
+      sort_by: "popularity.desc",
     },
     headers: {
       accept: "application/json",
@@ -164,6 +165,7 @@ export async function searchPeople(url, page, query) {
       language: "en-US",
       query,
       page: page || "1",
+      sort_by: "popularity.desc",
     },
     headers: {
       accept: "application/json",

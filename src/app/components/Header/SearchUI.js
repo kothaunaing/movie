@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const SearchUI = ({ setOpenSearch }) => {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("Movies");
+  const [type, setType] = useState("movies");
 
   const router = useRouter();
 
@@ -18,9 +18,7 @@ const SearchUI = ({ setOpenSearch }) => {
     e.preventDefault();
 
     if (query) {
-      router.push(
-        `/search/${type.toLocaleLowerCase()}?query=${encodeURIComponent(query)}`
-      );
+      router.push(`/search/${type}?query=${encodeURIComponent(query)}`);
       setOpenSearch(false);
     }
   };
@@ -40,8 +38,9 @@ const SearchUI = ({ setOpenSearch }) => {
             onChange={(e) => setType(e.target.value)}
             className="text-black mb-2 p-2 rounded-lg"
           >
-            <option>Movies</option>
-            <option>People</option>
+            <option value={"movies"}>Movies</option>
+            <option value={"tvshows"}>TV shows</option>
+            <option value={"people"}>People</option>
           </select>
           <input
             value={query}

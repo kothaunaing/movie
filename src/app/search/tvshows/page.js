@@ -10,10 +10,10 @@ export async function generateMetadata({ searchParams }) {
 
   if (query) {
     title = page
-      ? `Search Movies | Results for ${query} | Page ${page} `
-      : `Search Movies |Results for ${query}`;
+      ? `Search TV shows | Results for ${query} | Page ${page} `
+      : `Search TV shows | Results for ${query}`;
   } else {
-    title = "ZFlix | Search Movies";
+    title = "ZFlix | Search TV shows";
   }
 
   return {
@@ -26,7 +26,7 @@ const Search = async ({ searchParams }) => {
   const { page, query } = await searchParams;
 
   const data = await searchMovie(
-    "https://api.themoviedb.org/3/search/movie",
+    "https://api.themoviedb.org/3/search/tv",
     page,
     query
   );
@@ -44,7 +44,7 @@ const Search = async ({ searchParams }) => {
               }
               newData={data}
               page={page}
-              seeMorePath={"/movies"}
+              seeMorePath={"/tvshows"}
               query={query}
             />
           </div>

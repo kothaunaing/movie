@@ -11,10 +11,10 @@ export async function generateMetadata({ searchParams }) {
 
   if (query) {
     title = page
-      ? `Results for ${query} | Page ${page} `
-      : `Results for ${query}`;
+      ? `Search People | Results for ${query} | Page ${page} `
+      : `Search People | Results for ${query}`;
   } else {
-    title = "ZFlix | Search";
+    title = "ZFlix | Search People";
   }
 
   return {
