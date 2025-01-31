@@ -40,7 +40,7 @@ const SinglePeople = ({ person }) => {
             alt={person.name}
           />
           <div className="mt-2">
-            <div className="font-bold text-xl flex gap-1 items-center">
+            <div className="font-bold text-xl flex gap-1 items-center justify-center">
               <GenderIcon gender={person.gender} /> <span>{person.name}</span>
             </div>
             <div className="text-sm">{formatDateWithAge(person.birthday)}</div>
@@ -58,6 +58,7 @@ const SinglePeople = ({ person }) => {
           title={"Movies"}
           url={`https://api.themoviedb.org/3/person/${person.id}/movie_credits`}
           seeMorePath={"/movies"}
+          basePath={"/movies"}
         />
       </div>
       <div className="mt-4">
@@ -65,6 +66,7 @@ const SinglePeople = ({ person }) => {
           title={"TV shows"}
           url={`https://api.themoviedb.org/3/person/${person.id}/tv_credits`}
           seeMorePath={"/tvshows"}
+          basePath={"/tvshows"}
         />
       </div>
     </div>

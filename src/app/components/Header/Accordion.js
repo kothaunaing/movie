@@ -3,7 +3,7 @@ import { ChevronDownIcon } from "lucide-react";
 import { useState } from "react";
 
 const Accordion = ({ text, children }) => {
-  const [opened, setOpened] = useState(true);
+  const [opened, setOpened] = useState(false);
 
   return (
     <li className="w-full flex flex-col justify-center">

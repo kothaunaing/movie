@@ -5,7 +5,7 @@ export async function generateMetadata({ searchParams }) {
   const { page } = await searchParams;
 
   return {
-    title: page ? `Movies | Page ${page}` : "ZFlix | Top Rated",
+    title: page ? `Movies | Page ${page}` : "ZFlix | Top Rated Movies",
     description: "Explore movies",
   };
 }

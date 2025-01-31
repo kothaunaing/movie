@@ -3,18 +3,17 @@ import React from "react";
 import Movie from "./Movie";
 import Pagination from "./Pagination";
 
-const Movies = async ({ title, seeMorePath, url, page, search, query }) => {
+const Movies = async ({ newData, title, seeMorePath, url, page, query }) => {
   try {
     let data;
 
-    if (search) {
+    if (url) {
       data = await getMovies(url, page);
-    } else {
-      data = await searchMovie(url, page, query);
+    } else if (newData) {
+      data = newData;
     }
-    const movies = data?.results;
 
-    console.log(movies);
+    const movies = data?.results;
 
     return (
       <div>

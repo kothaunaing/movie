@@ -179,3 +179,47 @@ export async function searchPeople(url, page, query) {
     return null;
   }
 }
+
+export async function getMovieGenresList(url) {
+  const options = {
+    method: "GET",
+    url,
+    params: { language: "en" },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log("Error in getCreditsById: " + error.message);
+    return null;
+  }
+}
+
+export async function getMoviesByGenreId(url, genreId, page) {
+  const options = {
+    method: "GET",
+    url,
+    params: {
+      with_genres: genreId,
+      sort_by: "popularity.desc",
+      page: page || 1,
+    },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.log("Error in getCreditsById: " + error.message);
+    return null;
+  }
+}

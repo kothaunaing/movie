@@ -1,4 +1,4 @@
-import { baseURL } from "@/lib/utils";
+import { baseURL, convertToKabaeCase } from "@/lib/utils";
 import { VideoIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +10,7 @@ const People = ({ people }) => {
       {people.map((person, index) => {
         return (
           <Link
-            href={`/people/${person.id}`}
+            href={`/people/${person.id}-${convertToKabaeCase(person.name)}`}
             key={person.profile_path + index}
             className="flex-shrink-0 relative rounded-lg overflow-hidden group"
           >

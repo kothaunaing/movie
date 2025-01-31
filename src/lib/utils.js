@@ -20,10 +20,21 @@ export function formatDate(date) {
 }
 
 export function formatDateWithAge(dateString) {
-  const birthDate = parseISO(dateString);
-  const formattedDate = format(birthDate, "MMMM d, yyyy");
-  const age = differenceInYears(new Date(), birthDate);
-  return `${formattedDate} (${age} years old)`;
+  if (dateString) {
+    const birthDate = parseISO(dateString);
+    const formattedDate = format(birthDate, "MMMM d, yyyy");
+    const age = differenceInYears(new Date(), birthDate);
+    return `${formattedDate} (${age} years old)`;
+  } else {
+    return `Unknown`;
+  }
 }
+
+export const convertToKabaeCase = (text) => {
+  if (text) {
+    const arr = text.split(" ");
+    return arr.join("-");
+  }
+};
 
 export const baseURL = "https://image.tmdb.org/t/p/w500";

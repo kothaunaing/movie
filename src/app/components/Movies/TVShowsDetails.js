@@ -44,6 +44,7 @@ const TVShowsDetailsComponent = ({ movie }) => {
           title={"Recommended TV shows"}
           url={`https://api.themoviedb.org/3/tv/${movie.id}/recommendations`}
           seeMorePath={"/tvshows"}
+          basePath={"/tvshows"}
         />
       </div>
     </div>
@@ -53,7 +54,7 @@ const TVShowsDetailsComponent = ({ movie }) => {
 const Details = ({ movie, className }) => {
   return (
     <div className={clsx("mt-2", className)}>
-      <h1 className=" p-2 font-bold text-2xl text-center md:text-left">
+      <h1 className="font-bold text-2xl text-center md:text-left">
         {movie?.name || movie?.title}
       </h1>
       <div className="font-bold text-center md:text-left">
@@ -72,7 +73,9 @@ const Details = ({ movie, className }) => {
             <Link
               className="hover:underline hover:drop-shadow-md"
               key={genre.id}
-              href={`/genres/${genre.name}`}
+              href={`/tvshows/genres/${genre.id}-${encodeURIComponent(
+                genre.name
+              )}`}
             >
               {genre.name}
             </Link>

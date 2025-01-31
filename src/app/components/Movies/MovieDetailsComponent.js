@@ -26,7 +26,9 @@ const Details = ({ movie, className }) => {
             <Link
               className="hover:underline hover:drop-shadow-md"
               key={genre.id}
-              href={`/genres/${genre.name}`}
+              href={`/movies/genres/${genre.id}-${encodeURIComponent(
+                genre.name
+              )}`}
             >
               {genre.name}
             </Link>
@@ -78,6 +80,7 @@ const MovieDetailsComponent = ({ movie, tab }) => {
           title={"Recommended Movies"}
           url={`https://api.themoviedb.org/3/movie/${movie.id}/recommendations`}
           seeMorePath={"/movies"}
+          basePath={"/movies"}
         />
       </div>
     </div>

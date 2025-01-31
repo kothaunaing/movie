@@ -29,6 +29,8 @@ const MovieDetails = async ({ params, searchParams }) => {
       `https://api.themoviedb.org/3/movie/${movieId}`
     );
 
+    console.log(movie);
+
     return (
       <div className="max-w-3xl mx-auto">
         <div className="">

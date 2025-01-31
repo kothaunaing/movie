@@ -1,5 +1,7 @@
 import React from "react";
 import Movies from "../../components/Movies/Movies";
+import { searchMovie } from "@/lib/moviesList";
+import NotFound from "@/app/components/Movies/NotFound";
 
 export async function generateMetadata({ searchParams }) {
   const { page, query } = await searchParams;
@@ -23,20 +25,36 @@ export async function generateMetadata({ searchParams }) {
 const Search = async ({ searchParams }) => {
   const { page, query } = await searchParams;
 
+  const data = await searchMovie(
+    "https://api.themoviedb.org/3/search/multi",
+    page,
+    query
+  );
+
   return (
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
-        <Movies
-          title={
+        {data && data.results.length ? (
+          <div>
+            <Movies
+              title={
+                <p>
+                  Results For <span className="italic">{query}</span>{" "}
+                </p>
+              }
+              newData={data}
+              page={page}
+              seeMorePath={"/movies"}
+              query={query}
+            />
+          </div>
+        ) : (
+          <NotFound>
             <p>
-              Results For <span className="italic">{query}</span>{" "}
+              No results found for <span className="italic bold">{query}</span>
             </p>
-          }
-          page={page}
-          url={"https://api.themoviedb.org/3/search/multi"}
-          seeMorePath={"/movies"}
-          query={query}
-        />
+          </NotFound>
+        )}
       </div>
     </main>
   );

@@ -1,9 +1,9 @@
 "use client";
 import useSlider from "@/lib/useSlider";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { convertToKabaeCase } from "lib/utils";
 
 const baseURL = "https://image.tmdb.org/t/p/w500";
 
@@ -34,7 +34,7 @@ const CastSlider = ({ data }) => {
         {data.cast.map((c) => {
           return (
             <Link
-              href={`/people/${c.id}`}
+              href={`/people/${c.id}-${convertToKabaeCase(c.name)}`}
               key={c.id}
               className={
                 "group relative flex-shrink-0 overflow-hidden rounded-md"

@@ -14,6 +14,8 @@ const NavLinksMobile = ({ handleClick }) => {
     isOnTvActive,
     isTvTopRatedActive,
     isPeopleActive,
+    isMovieGenresActive,
+    isTVGenresActive,
   } = useActive();
 
   return (
@@ -69,6 +71,20 @@ const NavLinksMobile = ({ handleClick }) => {
           path={"/tvshows/top-rated"}
           text={"Top Rated"}
           active={isTvTopRatedActive}
+        />
+      </Accordion>
+      <Accordion text={"Genres"}>
+        <ListItem
+          onClick={handleClick}
+          path={"/movies/genres"}
+          text={"Movies"}
+          active={isMovieGenresActive}
+        />
+        <ListItem
+          onClick={handleClick}
+          path={"/tvshows/genres"}
+          text={"TV shows"}
+          active={isTVGenresActive}
         />
       </Accordion>
       <ListItem

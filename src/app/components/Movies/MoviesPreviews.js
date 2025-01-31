@@ -4,9 +4,22 @@ import Link from "next/link";
 import React from "react";
 import Movie, { MovieSlider } from "./Movie";
 
-const MoviesPreviews = async ({ title, url, seeMorePath, showLink }) => {
+const MoviesPreviews = async ({
+  newData,
+  title,
+  url,
+  basePath,
+  seeMorePath,
+  showLink,
+}) => {
   try {
-    const data = await getMovies(url);
+    let data;
+
+    if (url) {
+      data = await getMovies(url);
+    } else {
+      data = newData;
+    }
     const movies = data?.results || data?.cast;
 
     return (
@@ -36,7 +49,11 @@ const MoviesPreviews = async ({ title, url, seeMorePath, showLink }) => {
             );
           })}
         </div> */}
-        <MovieSlider seeMorePath={seeMorePath} movies={movies} />
+        <MovieSlider
+          seeMorePath={seeMorePath}
+          basePath={basePath}
+          movies={movies}
+        />
       </section>
     );
   } catch (error) {

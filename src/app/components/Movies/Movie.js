@@ -7,7 +7,7 @@ import useSlider from "lib/useSlider";
 
 const baseURL = "https://image.tmdb.org/t/p/w500";
 
-export const MovieSlider = ({ movies, seeMorePath }) => {
+export const MovieSlider = ({ movies, seeMorePath, basePath }) => {
   const {
     sliderRef,
     scrollLeft,
@@ -35,7 +35,7 @@ export const MovieSlider = ({ movies, seeMorePath }) => {
           return (
             <Movie
               className={"flex-shrink-0"}
-              seeMorePath={seeMorePath}
+              seeMorePath={basePath}
               key={movie.id + (movie?.name || movie?.title) + index}
               movie={movie}
               imageClass={"h-[230px]"}
@@ -59,6 +59,13 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
   const isMovie = movie?.media_type === "movie";
   const path = isMovie ? "/movies" : "/tvshows";
 
+  const convertToKabaeCase = (text) => {
+    if (text) {
+      const arr = text.split(" ");
+      return arr.join("-");
+    }
+  };
+
   return (
     <div className={clsx("group relative overflow-hidden", className)}>
       <div className="absolute bottom-2 right-2 z-10">
@@ -69,8 +76,18 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
       <Link
         href={
           movie?.media_type
-            ? path + "/m/" + movie.id
-            : seeMorePath + "/m/" + movie.id
+            ? path +
+              "/m/" +
+              movie.id +
+              `-${convertToKabaeCase(
+                movie?.name?.toLowerCase() || movie?.title.toLowerCase()
+              )}`
+            : seeMorePath +
+              "/m/" +
+              movie.id +
+              `-${convertToKabaeCase(
+                movie?.name?.toLowerCase() || movie?.title.toLowerCase()
+              )}`
         }
       >
         {/* <Image
