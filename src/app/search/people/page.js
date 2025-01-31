@@ -36,7 +36,7 @@ const SearchPeople = async ({ searchParams }) => {
       <div className="m-2">
         {data && data?.results?.length ? (
           <div>
-            <h1 className="font-bold text-lg">
+            <h1 className="font-bold text-xl">
               <p>
                 Results For <span className="italic">{query}</span>{" "}
               </p>
