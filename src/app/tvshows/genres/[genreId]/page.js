@@ -35,7 +35,6 @@ const SingleGenre = async ({ params, searchParams }) => {
           seeMorePath={"/tvshows"}
         />
       </div>
-      \
     </main>
   );
 };
