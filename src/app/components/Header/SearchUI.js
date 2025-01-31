@@ -1,20 +1,13 @@
 import { XIcon } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const SearchUI = ({ setOpenSearch }) => {
-  const pathname = usePathname();
-  const searchType = pathname.split("/")[pathname.split("/").length - 1];
   const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [type, setType] = useState("Movies");
+
   const router = useRouter();
-
-  useEffect(() => {
-    const type = searchType[0]?.toUpperCase() + searchType?.slice(1);
-
-    if (searchType) setType(type);
-  }, [searchType]);
 
   useEffect(() => {
     const q = searchParams.get("query");
@@ -24,10 +17,12 @@ const SearchUI = ({ setOpenSearch }) => {
   const handleForm = (e) => {
     e.preventDefault();
 
-    router.push(
-      `/search/${type.toLocaleLowerCase()}?query=${encodeURIComponent(query)}`
-    );
-    setOpenSearch(false);
+    if (query) {
+      router.push(
+        `/search/${type.toLocaleLowerCase()}?query=${encodeURIComponent(query)}`
+      );
+      setOpenSearch(false);
+    }
   };
 
   return (
