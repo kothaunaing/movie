@@ -29,7 +29,7 @@ const SingleGenre = async ({ params, searchParams }) => {
   return (
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
-        {data && data.results.length ? (
+        {data && data?.results?.length ? (
           <Movies
             title={genreName}
             newData={data}

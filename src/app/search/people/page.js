@@ -34,7 +34,7 @@ const SearchPeople = async ({ searchParams }) => {
   return (
     <main className="max-w-4xl mx-auto">
       <div className="m-2">
-        {data && data.results.length ? (
+        {data && data?.results?.length ? (
           <div>
             <h1 className="font-bold text-lg">
               <p>

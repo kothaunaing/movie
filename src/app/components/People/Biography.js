@@ -9,7 +9,7 @@ const Biography = ({ text }) => {
   return (
     <p>
       {showed ? text : text.slice(0, characters)}
-      {text.length > characters && (
+      {text?.length > characters && (
         <span
           onClick={() => setShowed((prev) => !prev)}
           className="text-blue-600 underline cursor-pointer"

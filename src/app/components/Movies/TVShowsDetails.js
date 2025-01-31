@@ -5,6 +5,7 @@ import Cast from "./Cast";
 import clsx from "clsx";
 import MoviesPreviews from "./MoviesPreviews";
 import Videos from "./Videos";
+import { getLanguageFullName, prettyDate } from "lib/utils";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -25,6 +26,18 @@ const TVShowsDetailsComponent = ({ movie }) => {
           <Details movie={movie} className={"hidden md:block"} />
           <h1 className="font-bold text-xl mb-3 md:mt-4">Overview</h1>
           <p>{movie.overview}</p>
+          <div className="mt-4 space-y-3">
+            <div>
+              <p className="font-bold text-xl">Status</p>
+              <p>
+                {movie.status} ({prettyDate(movie?.release_date)})
+              </p>
+            </div>
+            <div>
+              <p className="font-bold text-xl">Original Language</p>
+              <p>{getLanguageFullName(movie.original_language)}</p>
+            </div>
+          </div>
         </div>
 
         <img
@@ -61,7 +74,7 @@ const Details = ({ movie, className }) => {
       <h1 className="font-bold text-2xl text-center md:text-left">
         {movie?.name || movie?.title}
       </h1>
-      <div className="font-bold text-center md:text-left">
+      <div className="font-bold text-center md:text-left mb-2">
         <span>
           {movie.number_of_seasons}{" "}
           {movie.number_of_seasons <= 1 ? "season" : "seasons"}
@@ -71,7 +84,7 @@ const Details = ({ movie, className }) => {
           {movie.number_of_episodes <= 1 ? "episode" : "episodes"}
         </span>
       </div>
-      <div className="space-x-2 text-center md:text-left">
+      <div className="space-x-2 text-center md:text-left break-words">
         {movie.genres.map((genre) => {
           return (
             <Link

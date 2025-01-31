@@ -31,7 +31,7 @@ const ScreenShotSlider = ({ images }) => {
         style={{ scrollbarWidth: "none" }}
         className="flex overflow-auto mt-4 m-2 gap-2"
       >
-        {images.backdrops.map((image) => {
+        {images.backdrops.slice(0, 40).map((image) => {
           return (
             // <Image
             //   loading="lazy"

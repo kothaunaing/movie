@@ -6,15 +6,13 @@ import ScreenShotSlider from "./ScreenShotSlider";
 const MovieImages = async ({ url, tab }) => {
   const images = await getImagesById(url);
 
-  console.log(images);
-
-  if (images.backdrops.length) {
+  if (images?.backdrops?.length) {
     return (
       <div id="images">
         <div className="m-2 flex gap-2">
           <h1
             className={clsx(
-              "font-bold text-lg transition-[border] p-1 drop-shadow-xl "
+              "font-bold text-xl transition-[border] p-1 drop-shadow-xl "
             )}
           >
             Screenshots

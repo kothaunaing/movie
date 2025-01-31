@@ -22,11 +22,11 @@ const MoviesPreviews = async ({
     }
     const movies = data?.results || data?.cast;
 
-    if (movies.length) {
+    if (movies?.length) {
       return (
         <section className="">
           <h1 className="flex gap-3">
-            <span className="font-bold">{title}</span>
+            <span className="font-bold text-xl">{title}</span>
             {showLink && (
               <Link className="flex gap-1 items-center" href={seeMorePath}>
                 See more

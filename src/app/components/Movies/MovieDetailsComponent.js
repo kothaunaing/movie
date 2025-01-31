@@ -6,22 +6,23 @@ import MovieImages from "./MovieImages";
 import Cast from "./Cast";
 import MoviesPreviews from "./MoviesPreviews";
 import Videos from "./Videos";
+import { formatMoney, getLanguageFullName, prettyDate } from "lib/utils";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const Details = ({ movie, className }) => {
   return (
     <div className={clsx("mt-2 ", className)}>
-      <h1 className="font-bold text-2xl text-center md:text-left">
+      <h1 className="font-bold text-2xl text-center md:text-left mb-1">
         {movie?.name || movie?.title}
       </h1>
-      <div className="font-bold text-center md:text-left">
+      <div className="font-bold text-center md:text-left mb-2">
         <span>
           {formatDate(movie.release_date).year} {" • "}{" "}
         </span>
         <span className="">{formatMinuteToHour(movie.runtime)}</span>
       </div>
-      <div className="space-x-2 text-center md:text-left">
+      <p className="space-x-2 md:text-left w-full text-center break-words">
         {movie.genres.map((genre) => {
           return (
             <Link
@@ -35,7 +36,7 @@ const Details = ({ movie, className }) => {
             </Link>
           );
         })}
-      </div>
+      </p>
       <p className="text-center italic mt-2 text-gray-400 md:text-left">
         {movie.tagline}
       </p>
@@ -60,6 +61,26 @@ const MovieDetailsComponent = ({ movie, tab }) => {
           <Details movie={movie} className={"hidden md:block"} />
           <h1 className="font-bold text-xl mb-3 md:mt-4">Overview</h1>
           <p>{movie.overview}</p>
+          <div className="mt-4 space-y-3">
+            <div>
+              <p className="font-bold text-xl">Status</p>
+              <p>
+                {movie.status} ({prettyDate(movie?.release_date)})
+              </p>
+            </div>
+            <div>
+              <p className="font-bold text-xl">Original Language</p>
+              <p>{getLanguageFullName(movie.original_language)}</p>
+            </div>
+            <div>
+              <p className="font-bold text-xl">Budget</p>
+              <p>{formatMoney(movie?.budget)}</p>
+            </div>
+            <div>
+              <p className="font-bold text-xl">Revenue</p>
+              <p>{formatMoney(movie?.revenue)}</p>
+            </div>
+          </div>
         </div>
 
         <img
