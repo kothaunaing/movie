@@ -45,7 +45,6 @@ const Details = ({ movie, className }) => {
 };
 
 const MovieDetailsComponent = ({ movie, tab }) => {
-  console.log(movie);
   return (
     <div className="relative">
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />

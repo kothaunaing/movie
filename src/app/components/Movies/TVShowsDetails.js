@@ -5,7 +5,8 @@ import Cast from "./Cast";
 import clsx from "clsx";
 import MoviesPreviews from "./MoviesPreviews";
 import Videos from "./Videos";
-import { convertToKabaeCase, getLanguageFullName, prettyDate } from "lib/utils";
+import { convertToKabaeCase, getLanguageFullName } from "lib/utils";
+import Seasons from "../Seasons/Seasons";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -55,7 +56,6 @@ const CreatedBy = ({ createdBy }) => {
 };
 
 const TVShowsDetailsComponent = ({ movie }) => {
-  console.log(movie);
   return (
     <div className="relative">
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />
@@ -145,6 +145,7 @@ const TVShowsDetailsComponent = ({ movie }) => {
         )}
       </div>
       <div>
+        <Seasons movie={movie} />
         <MovieImages
           url={`https://api.themoviedb.org/3/tv/${movie.id}/images`}
         />
@@ -182,15 +183,10 @@ const Details = ({ movie, className }) => {
         {movie?.name || movie?.title}
       </h1>
       <div className="font-bold text-center md:text-left mb-2">
-        <Link
-          className="hover:underline"
-          href={`/tvshows/m/${movie.id}-${convertToKabaeCase(
-            movie.name
-          )}/seasons`}
-        >
+        <span className="">
           {movie.number_of_seasons}{" "}
           {movie.number_of_seasons <= 1 ? "season" : "seasons"}
-        </Link>
+        </span>
         <span className="ml-2">
           {movie.number_of_episodes}{" "}
           {movie.number_of_episodes <= 1 ? "episode" : "episodes"}
