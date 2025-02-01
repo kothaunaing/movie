@@ -103,7 +103,7 @@ const SingleSeasonComponent = async ({ movie, seasonNumber }) => {
                           </span>
                         ) : null}
                         {ep?.runtime ? (
-                          <p className="bg-black/70 font-bold mt-2 p-2 rounded-md  text-sm">
+                          <p className="bg-black/70 font-bold mt-2 p-2 rounded-md  text-sm max-w-fit">
                             {formatMinuteToHour(ep.runtime)}
                           </p>
                         ) : null}
