@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const baseURL = "https://image.tmdb.org/t/p/original";
+const baseURL2 = "https://image.tmdb.org/t/p/w500";
 
 const MovieInfo = async ({ movie, seasonNumber }) => {
   const seasonDetails = await getMovieById(
@@ -72,8 +73,8 @@ const MovieInfo = async ({ movie, seasonNumber }) => {
                     <div className="relative">
                       {ep.still_path ? (
                         <img
-                          className="h-[150px] rounded-md w-full  object-cover"
-                          src={baseURL + ep.still_path}
+                          className="h-[150px] rounded-md w-full min-w-[300px]  object-cover"
+                          src={baseURL2 + ep.still_path}
                         />
                       ) : (
                         <div

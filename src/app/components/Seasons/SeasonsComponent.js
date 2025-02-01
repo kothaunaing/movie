@@ -16,8 +16,8 @@ const SeasonsComponent = ({ movie }) => {
         {movie.seasons.map((season) => {
           return (
             <Link
-              href={`/tvshows/m/${movie.id}-${convertToKabaeCase(
-                movie.name
+              href={`/tvshows/m/${movie.id}-${encodeURIComponent(
+                convertToKabaeCase(movie.name)
               )}/season-${season.season_number}`}
               key={season.id}
               className="p-1 flex gap-2 hover:shadow-md hover:shadow-white cursor-pointer rounded-md"
@@ -51,7 +51,7 @@ const SeasonsComponent = ({ movie }) => {
                 <p className="italic">{season.episode_count} episodes</p>
                 <p className="mt-2">
                   {season.overview ? (
-                    season.overview
+                    season.overview.slice(0, 200) + "..."
                   ) : (
                     <span className="text-red-500 italic">No preview</span>
                   )}
