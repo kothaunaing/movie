@@ -45,22 +45,46 @@ const Details = ({ movie, className }) => {
 };
 
 const MovieDetailsComponent = ({ movie, tab }) => {
+  console.log(movie);
   return (
     <div className="relative">
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />
       <div className="md:grid md:grid-cols-2  p-2">
         <div className="mt-4 flex flex-col items-center ">
-          <img
-            src={baseURL + movie.poster_path}
-            className="h-[250px] object-fit rounded-lg shadow-md shadow-white/40"
-          />
+          <div className="relative">
+            {movie.poster_path ? (
+              <img
+                src={baseURL + movie.poster_path}
+                className="h-[250px] w-full object-fit rounded-lg shadow-md shadow-white/40"
+              />
+            ) : (
+              <div
+                className={clsx(
+                  "flex justify-center items-center h-[250px] w-full"
+                )}
+              >
+                No image
+              </div>
+            )}
+            <div className="absolute bottom-2 right-2 z-10">
+              {movie?.vote_average ? (
+                <span className="bg-black/70 font-bold p-2 rounded-full size-10">
+                  {movie.vote_average.toFixed("1")}/10
+                </span>
+              ) : null}
+            </div>
+          </div>
           <Details movie={movie} className={"md:hidden"} />
         </div>
 
         <div className="mt-4 md:mt-0 ">
           <Details movie={movie} className={"hidden md:block"} />
-          <h1 className="font-bold text-xl mb-3 md:mt-4">Overview</h1>
-          <p>{movie.overview}</p>
+          {movie.overview ? (
+            <div>
+              <h1 className="font-bold text-xl mb-3 md:mt-4">Overview</h1>
+              <p>{movie.overview}</p>
+            </div>
+          ) : null}
           <div className="mt-4 space-y-3">
             <div>
               <p className="font-bold text-xl">Status</p>
@@ -72,21 +96,44 @@ const MovieDetailsComponent = ({ movie, tab }) => {
               <p className="font-bold text-xl">Original Language</p>
               <p>{getLanguageFullName(movie.original_language)}</p>
             </div>
-            <div>
-              <p className="font-bold text-xl">Budget</p>
-              <p>{formatMoney(movie?.budget)}</p>
-            </div>
-            <div>
-              <p className="font-bold text-xl">Revenue</p>
-              <p>{formatMoney(movie?.revenue)}</p>
-            </div>
+            {movie?.original_language ? (
+              <div>
+                <p className="font-bold text-xl">Original Language</p>
+                <p>{getLanguageFullName(movie.original_language)}</p>
+              </div>
+            ) : null}
+            {movie?.budget ? (
+              <div>
+                <p className="font-bold text-xl">Budget</p>
+                <p>{formatMoney(movie?.budget)}</p>
+              </div>
+            ) : null}
+            {movie?.revenue ? (
+              <div>
+                <p className="font-bold text-xl">Revenue</p>
+                <p>{formatMoney(movie?.revenue)}</p>
+              </div>
+            ) : null}
+            {movie?.homepage ? (
+              <div>
+                <p className="font-bold text-xl">Website </p>
+                <Link
+                  className="break-words underline text-blue-400"
+                  href={movie.homepage}
+                >
+                  {movie.homepage}
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
 
-        <img
-          className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md "
-          src={baseURL + movie.backdrop_path}
-        />
+        {movie.backdrop_path && (
+          <img
+            className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md "
+            src={baseURL + movie.backdrop_path}
+          />
+        )}
       </div>
       <div>
         <MovieImages

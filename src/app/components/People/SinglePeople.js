@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import Biography from "./Biography";
 import MoviesPreviews from "../Movies/MoviesPreviews";
+import clsx from "clsx";
 
 const GenderIcon = ({ gender }) => {
   return (
@@ -31,14 +32,24 @@ const SinglePeople = ({ person }) => {
             width={150}
             alt={person.name}
           /> */}
-          <img
-            loading="lazy"
-            className="rounded-md"
-            src={baseURL + person.profile_path}
-            height={150}
-            width={150}
-            alt={person.name}
-          />
+          {person.profile_path ? (
+            <img
+              loading="lazy"
+              className="rounded-md"
+              src={baseURL + person.profile_path}
+              height={150}
+              width={150}
+              alt={person.name}
+            />
+          ) : (
+            <div
+              className={clsx(
+                "flex justify-center items-center w-[150px] h-[150px]"
+              )}
+            >
+              No image
+            </div>
+          )}
           <div className="mt-2">
             <div className="font-bold text-xl flex gap-1 items-center justify-center">
               <GenderIcon gender={person.gender} /> <span>{person.name}</span>
@@ -47,10 +58,12 @@ const SinglePeople = ({ person }) => {
           </div>
         </div>
 
-        <div>
-          <h1 className="font-bold text-xl mb-2">Biography</h1>
-          <Biography text={person.biography} />
-        </div>
+        {person?.biography ? (
+          <div>
+            <h1 className="font-bold text-xl mb-2">Biography</h1>
+            <Biography text={person.biography} />
+          </div>
+        ) : null}
       </div>
 
       <div className="mt-4">

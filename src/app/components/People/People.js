@@ -1,4 +1,5 @@
 import { baseURL, convertToKabaeCase } from "@/lib/utils";
+import clsx from "clsx";
 import { VideoIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,14 +23,24 @@ const People = ({ people }) => {
               height={100}
               width={100}
             /> */}
-            <img
-              loading="lazy"
-              className=" w-full h-full object-contain object-top group-hover:scale-125 transition-transform duration-150"
-              src={baseURL + person.profile_path}
-              alt={person.name}
-              height={100}
-              width={100}
-            />
+            {person.profile_path ? (
+              <img
+                loading="lazy"
+                className=" w-full h-full object-contain object-top group-hover:scale-125 transition-transform duration-150"
+                src={baseURL + person.profile_path}
+                alt={person.name}
+                height={100}
+                width={100}
+              />
+            ) : (
+              <div
+                className={clsx(
+                  "flex justify-center items-center w-full h-full"
+                )}
+              >
+                No image
+              </div>
+            )}
             <div className="absolute translate-y-5 group-hover:translate-y-0 transition-transform duration-300 hidden group-hover:block p-2 inset-0 bg-black/30 ">
               <p className="font-bold text-lg">{person.name}</p>
               <KnownFor knownFor={person.known_for} index={index} />

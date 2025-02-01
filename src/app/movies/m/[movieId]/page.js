@@ -3,6 +3,8 @@ import NotFound from "@app/components/Movies/NotFound";
 import MovieDetailsComponent from "../../../components/Movies/MovieDetailsComponent";
 import { InfoIcon } from "lucide-react";
 import Link from "next/link";
+import { convertToKabaeCase } from "lib/utils";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { movieId } = await params;
@@ -28,8 +30,6 @@ const MovieDetails = async ({ params, searchParams }) => {
     const movie = await getMovieById(
       `https://api.themoviedb.org/3/movie/${movieId}`
     );
-
-    console.log(movie);
 
     return (
       <div className="max-w-3xl mx-auto">

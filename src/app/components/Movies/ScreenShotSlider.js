@@ -1,6 +1,7 @@
 "use client";
 
 import useSlider from "@/lib/useSlider";
+import clsx from "clsx";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -33,24 +34,26 @@ const ScreenShotSlider = ({ images }) => {
       >
         {images.backdrops.slice(0, 40).map((image) => {
           return (
-            // <Image
-            //   loading="lazy"
-            //   key={image.file_path}
-            //   className="h-[180px] rounded-lg flex-shrink-0 "
-            //   src={baseURL + image.file_path}
-            //   alt={image.file_path}
-            //   height={180}
-            //   width={300}
-            // />
-            <img
-              loading="lazy"
-              key={image.file_path}
-              className="h-[180px] rounded-lg flex-shrink-0 "
-              src={baseURL + image.file_path}
-              alt={image.file_path}
-              height={180}
-              width={300}
-            />
+            <div key={image.file_path} className="flex-shrink-0 ">
+              {image.file_path ? (
+                <img
+                  loading="lazy"
+                  className="h-[180px] w-full rounded-lg "
+                  src={baseURL + image.file_path}
+                  alt={image.file_path}
+                  height={180}
+                  width={300}
+                />
+              ) : (
+                <div
+                  className={clsx(
+                    "flex justify-center items-center h-[180px] w-[150px]"
+                  )}
+                >
+                  No image
+                </div>
+              )}
+            </div>
           );
         })}
       </div>

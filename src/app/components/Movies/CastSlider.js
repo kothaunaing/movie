@@ -4,6 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { convertToKabaeCase } from "lib/utils";
+import clsx from "clsx";
 
 const baseURL = "https://image.tmdb.org/t/p/w500";
 
@@ -48,14 +49,24 @@ const CastSlider = ({ data }) => {
                 height={180}
                 width={100}
               /> */}
-              <img
-                loading={"lazy"}
-                className="h-[180px] w-full rounded-md group-hover:scale-125 duration-150 transition-transform"
-                src={baseURL + c.profile_path}
-                alt={c.name}
-                height={180}
-                width={100}
-              />
+              {c.profile_path ? (
+                <img
+                  loading={"lazy"}
+                  className="h-[180px] w-full rounded-md group-hover:scale-125 duration-150 transition-transform"
+                  src={baseURL + c.profile_path}
+                  alt={c.name}
+                  height={180}
+                  width={100}
+                />
+              ) : (
+                <div
+                  className={clsx(
+                    "flex justify-center items-center h-[180px] w-[120px] border rounded-md"
+                  )}
+                >
+                  No image
+                </div>
+              )}
 
               <div className="flex flex-col justify-end absolute inset-0 bg-black/40 p-2">
                 <p className="font-bold">{c.name}</p>

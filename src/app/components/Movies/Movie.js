@@ -71,7 +71,7 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
       <div className="absolute bottom-2 right-2 z-10">
         {movie?.vote_average ? (
           <span className="bg-black/70 font-bold p-2 rounded-full size-10">
-            {(movie.vote_average * 10).toFixed("0")}%
+            {movie.vote_average.toFixed("1")}/10
           </span>
         ) : null}
       </div>
@@ -103,16 +103,27 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
           alt={movie?.name || movie?.title}
           src={baseURL + movie.poster_path}
         /> */}
-        <img
-          className={clsx(
-            "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
-            imageClass
-          )}
-          height={230}
-          width={150}
-          alt={movie?.name || movie?.title}
-          src={baseURL + movie.poster_path}
-        />
+        {movie.poster_path ? (
+          <img
+            className={clsx(
+              "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
+              imageClass
+            )}
+            height={230}
+            width={150}
+            alt={movie?.name || movie?.title}
+            src={baseURL + movie.poster_path}
+          />
+        ) : (
+          <div
+            className={clsx(
+              "flex justify-center items-center w-[150px] border rounded-md",
+              imageClass
+            )}
+          >
+            No image
+          </div>
+        )}
 
         <div className="absolute hidden inset-0 group-hover:flex bg-black/60 justify-center p-2">
           <div>

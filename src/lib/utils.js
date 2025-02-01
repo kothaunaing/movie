@@ -26,7 +26,7 @@ export function prettyDate(dateString) {
 
     return formattedDate;
   } else {
-    return `Unknown`;
+    return `Unknown Date`;
   }
 }
 export function formatDateWithAge(dateString) {
@@ -42,7 +42,7 @@ export function formatDateWithAge(dateString) {
 
 export const convertToKabaeCase = (text) => {
   if (text) {
-    const arr = text.split(" ");
+    const arr = text.toLowerCase().split(" ");
     return arr.join("-");
   }
 };
