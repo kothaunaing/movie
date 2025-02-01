@@ -1,5 +1,9 @@
 import { getMovieById } from "@/lib/moviesList";
-import { convertToKabaeCase, prettyDate } from "@/lib/utils";
+import {
+  convertToKabaeCase,
+  formatMinuteToHour,
+  prettyDate,
+} from "@/lib/utils";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
@@ -7,7 +11,7 @@ import React from "react";
 const baseURL = "https://image.tmdb.org/t/p/original";
 const baseURL2 = "https://image.tmdb.org/t/p/w500";
 
-const MovieInfo = async ({ movie, seasonNumber }) => {
+const SingleSeasonComponent = async ({ movie, seasonNumber }) => {
   const seasonDetails = await getMovieById(
     `https://api.themoviedb.org/3/tv/${movie.id}/season/${seasonNumber}`
   );
@@ -98,6 +102,11 @@ const MovieInfo = async ({ movie, seasonNumber }) => {
                             Episode {ep.episode_number}
                           </span>
                         ) : null}
+                        {ep?.runtime ? (
+                          <p className="bg-black/70 font-bold mt-2 p-2 rounded-md size-10 text-sm">
+                            {formatMinuteToHour(ep.runtime)}
+                          </p>
+                        ) : null}
                       </div>
                     </div>
                     <div className="flex-1 mt-2 md:mt-0">
@@ -127,4 +136,4 @@ const MovieInfo = async ({ movie, seasonNumber }) => {
   }
 };
 
-export default MovieInfo;
+export default SingleSeasonComponent;

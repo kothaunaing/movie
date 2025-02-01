@@ -1,4 +1,4 @@
-import MovieInfo from "@/app/components/Seasons/MovieInfo";
+import SingleSeasonComponent from "@/app/components/Seasons/SingleSeasonComponent";
 import { getMovieById } from "@/lib/moviesList";
 
 export async function generateMetadata({ params }) {
@@ -33,7 +33,7 @@ const SeasonsDetails = async ({ params }) => {
     return (
       <main className="max-w-4xl mx-auto">
         <div className="m-2">
-          <MovieInfo seasonNumber={newSeasonNumber} movie={movie} />
+          <SingleSeasonComponent seasonNumber={newSeasonNumber} movie={movie} />
         </div>
       </main>
     );
