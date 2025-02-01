@@ -98,12 +98,12 @@ const SingleSeasonComponent = async ({ movie, seasonNumber }) => {
                       </div>
                       <div className="absolute top-2 left-2 z-10 ">
                         {ep?.episode_number ? (
-                          <span className="bg-black/70 font-bold p-2 rounded-md size-10 text-sm">
+                          <span className="bg-black/70 font-bold p-2 rounded-md  text-sm">
                             Episode {ep.episode_number}
                           </span>
                         ) : null}
                         {ep?.runtime ? (
-                          <p className="bg-black/70 font-bold mt-2 p-2 rounded-md size-10 text-sm">
+                          <p className="bg-black/70 font-bold mt-2 p-2 rounded-md  text-sm">
                             {formatMinuteToHour(ep.runtime)}
                           </p>
                         ) : null}
