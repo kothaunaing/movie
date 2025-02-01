@@ -106,7 +106,7 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
         {movie.poster_path ? (
           <img
             className={clsx(
-              "rounded-md group-hover:scale-[1.5] transition-transform duration-150 object-fit ",
+              "rounded-md h-full group-hover:scale-[1.5] transition-transform duration-150 object-cover ",
               imageClass
             )}
             height={230}
@@ -117,7 +117,7 @@ const Movie = ({ movie, seeMorePath, className, imageClass }) => {
         ) : (
           <div
             className={clsx(
-              "flex justify-center items-center w-[150px] border rounded-md",
+              "flex justify-center items-center h-full w-[150px] border rounded-md",
               imageClass
             )}
           >

@@ -56,6 +56,7 @@ const NavLinksMobile = ({ handleClick }) => {
       </Accordion>
       <Accordion text={"TV shows"}>
         <ListItem
+          onClick={handleClick}
           path={"/tvshows/airing-today"}
           text={"Airing Today"}
           active={isTVAiringTodayActive}

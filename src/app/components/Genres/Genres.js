@@ -19,23 +19,27 @@ const Movies = async ({ genre, genreURL, seeMorePath }) => {
 const Genres = async ({ url, title, genreURL, seeMorePath }) => {
   const data = await getMovieGenresList(url);
 
-  return (
-    <div>
-      <h1 className="font-bold text-lg mb-4">{title}</h1>
-      <div className="space-y-6">
-        {data.genres.map((genre) => {
-          return (
-            <Movies
-              seeMorePath={seeMorePath}
-              key={genre.id}
-              genre={genre}
-              genreURL={genreURL}
-            />
-          );
-        })}
+  if (data) {
+    return (
+      <div>
+        <h1 className="font-bold text-lg mb-4">{title}</h1>
+        <div className="space-y-6">
+          {data.genres.map((genre) => {
+            return (
+              <Movies
+                seeMorePath={seeMorePath}
+                key={genre.id}
+                genre={genre}
+                genreURL={genreURL}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div className="text-center text-red-600">Error fetching data</div>;
+  }
 };
 
 export default Genres;

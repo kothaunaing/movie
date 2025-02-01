@@ -60,7 +60,7 @@ const MovieDetailsComponent = ({ movie, tab }) => {
             ) : (
               <div
                 className={clsx(
-                  "flex justify-center items-center h-[250px] w-full"
+                  "flex justify-center items-center h-[250px] w-full rounded-md border"
                 )}
               >
                 No image
@@ -87,15 +87,16 @@ const MovieDetailsComponent = ({ movie, tab }) => {
           ) : null}
           <div className="mt-4 space-y-3">
             <div>
+              <p className="font-bold text-xl">Original Title</p>
+              <p>{movie.original_title}</p>
+            </div>
+            <div>
               <p className="font-bold text-xl">Status</p>
               <p>
                 {movie.status} ({prettyDate(movie?.release_date)})
               </p>
             </div>
-            <div>
-              <p className="font-bold text-xl">Original Language</p>
-              <p>{getLanguageFullName(movie.original_language)}</p>
-            </div>
+
             {movie?.original_language ? (
               <div>
                 <p className="font-bold text-xl">Original Language</p>

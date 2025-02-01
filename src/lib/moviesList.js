@@ -95,7 +95,7 @@ export async function getPopularPeople(url, page) {
   const options = {
     method: "GET",
     url,
-    params: { language: "en-US", page: page || 1 },
+    params: { include_adult: "false", language: "en-US", page: page || 1 },
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${apiKey}`,
@@ -211,6 +211,7 @@ export async function getMoviesByGenreId(url, genreId, page) {
       sort_by: "popularity.desc",
       page: page || 1,
       language: "en-US",
+      include_adult: "false",
     },
     headers: {
       accept: "application/json",

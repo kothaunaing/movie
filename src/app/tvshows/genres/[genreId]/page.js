@@ -1,11 +1,12 @@
 import Movies from "@/app/components/Movies/Movies";
 import { getMoviesByGenreId } from "@/lib/moviesList";
+import { getGenreNameById } from "@/lib/utils";
 import React from "react";
 
 export async function generateMetadata({ params }) {
   const { genreId } = await params;
 
-  const genreName = decodeURIComponent(genreId.split("-")[1]);
+  const genreName = getGenreNameById(genreId, "tvshows");
 
   return {
     title: "ZFlix |TV Genres | " + genreName,
@@ -17,7 +18,7 @@ const SingleGenre = async ({ params, searchParams }) => {
   const { genreId } = await params;
   const { page } = await searchParams;
 
-  const genreName = decodeURIComponent(genreId.split("-")[1]);
+  const genreName = getGenreNameById(genreId, "tvshows");
 
   const data = await getMoviesByGenreId(
     "https://api.themoviedb.org/3/discover/tv",

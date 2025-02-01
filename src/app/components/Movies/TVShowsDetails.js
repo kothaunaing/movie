@@ -70,7 +70,7 @@ const TVShowsDetailsComponent = ({ movie }) => {
             ) : (
               <div
                 className={clsx(
-                  "flex justify-center items-center h-[250px] w-full"
+                  "flex justify-center items-center h-[250px] w-[160px] rounded-md border"
                 )}
               >
                 No image
