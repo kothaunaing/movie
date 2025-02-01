@@ -12,7 +12,7 @@ const SeasonsComponent = ({ movie }) => {
         {movie.number_of_episodes}{" "}
         {movie.number_of_episodes <= 1 ? "Episode" : "Episodes"}
       </h1>
-      <div className="space-y-2">
+      <div className="space-y-3">
         {movie.seasons.map((season) => {
           return (
             <Link
@@ -37,9 +37,9 @@ const SeasonsComponent = ({ movie }) => {
                     No image
                   </div>
                 )}
-                <div className="absolute bottom-2 right-2 z-10">
+                <div className="absolute top-2 right-1 z-10">
                   {season?.vote_average ? (
-                    <span className="bg-black/70 font-bold p-2 rounded-full size-10">
+                    <span className="bg-black/70 font-bold p-2 rounded-full size-10 text-sm">
                       {season.vote_average.toFixed("1")}/10
                     </span>
                   ) : null}

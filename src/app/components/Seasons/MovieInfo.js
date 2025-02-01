@@ -63,12 +63,12 @@ const MovieInfo = async ({ movie, seasonNumber }) => {
           ) : null}
           <div className="mt-4">
             <h1 className="font-bold text-xl">Episodes</h1>
-            <div className="space-y-2 mt-2">
+            <div className="space-y-3 mt-2">
               {seasonDetails.episodes.map((ep) => {
                 return (
                   <div
                     key={ep.id}
-                    className="p-1 flex gap-3 hover:shadow-md hover:shadow-white  rounded-md"
+                    className="p-1 md:flex gap-3 hover:shadow-md hover:shadow-white  rounded-md"
                   >
                     <div className="relative">
                       {ep.still_path ? (
@@ -100,7 +100,7 @@ const MovieInfo = async ({ movie, seasonNumber }) => {
                         ) : null}
                       </div>
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 mt-2 md:mt-0">
                       <p className="font-bold">{ep.name}</p>
                       <p className="italic">{prettyDate(ep.air_date)} </p>
 
