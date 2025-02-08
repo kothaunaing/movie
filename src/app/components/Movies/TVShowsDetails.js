@@ -139,7 +139,7 @@ const TVShowsDetailsComponent = ({ movie }) => {
 
         {movie.backdrop_path && (
           <img
-            className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md "
+            className=" w-full h-full object-cover object-top fixed inset-0 z-[-2] shadow-md shadow-black rounded-md bg-fixed"
             src={baseURL + movie.backdrop_path}
           />
         )}

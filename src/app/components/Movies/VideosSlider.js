@@ -15,6 +15,8 @@ const VideosSlider = ({ data }) => {
     showRightButton,
   } = useSlider();
 
+  console.log(data);
+
   return (
     <div className="relative">
       {showLeftButton && (
@@ -30,20 +32,23 @@ const VideosSlider = ({ data }) => {
         style={{ scrollbarWidth: "none" }}
         className="flex overflow-auto gap-2"
       >
-        {data?.results?.slice(0, 3).map((video) => {
-          return (
-            <iframe
-              key={video.id}
-              className="h-full rounded-md flex-shrink-0 "
-              src={`https://www.youtube.com/embed/${video.key}`}
-              title={video.name}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              height={150}
-              width={300}
-            ></iframe>
-          );
-        })}
+        {data?.results
+          ?.filter((r) => r.type === "Trailer")
+          .slice(0, 3)
+          .map((video) => {
+            return (
+              <iframe
+                key={video.id}
+                className="h-full rounded-md flex-shrink-0 "
+                src={`https://www.youtube.com/embed/${video.key}`}
+                title={video.name}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                height={150}
+                width={300}
+              ></iframe>
+            );
+          })}
       </div>
       {showRightButton && (
         <button
