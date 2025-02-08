@@ -29,7 +29,7 @@ export const MovieSlider = ({ movies, seeMorePath, basePath }) => {
       <div
         ref={sliderRef}
         style={{ scrollbarWidth: "none" }}
-        className="mt-4 flex overflow-x-auto md:overflow-auto space-x-4 scrollbar-hide  gap-1 "
+        className="mt-4 flex overflow-x-auto space-x-4 scrollbar-hide  gap-1 "
       >
         {movies.map((movie, index) => {
           return (

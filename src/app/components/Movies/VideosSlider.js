@@ -15,8 +15,6 @@ const VideosSlider = ({ data }) => {
     showRightButton,
   } = useSlider();
 
-  console.log(data);
-
   return (
     <div className="relative">
       {showLeftButton && (
@@ -30,12 +28,12 @@ const VideosSlider = ({ data }) => {
       <div
         ref={sliderRef}
         style={{ scrollbarWidth: "none" }}
-        className="flex overflow-auto gap-2"
+        className="flex overflow-auto gap-2 h-[220px]"
       >
         {data?.results
           ?.filter((r) => r.type === "Trailer")
-          .slice(0, 3)
-          .map((video) => {
+          ?.slice(0, 3)
+          ?.map((video) => {
             return (
               <iframe
                 key={video.id}

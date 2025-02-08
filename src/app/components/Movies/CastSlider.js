@@ -30,7 +30,7 @@ const CastSlider = ({ data }) => {
       <div
         style={{ scrollbarWidth: "none" }}
         ref={sliderRef}
-        className="flex overflow-auto gap-2"
+        className="flex overflow-x-auto  gap-2 "
       >
         {data.cast.map((c) => {
           return (
