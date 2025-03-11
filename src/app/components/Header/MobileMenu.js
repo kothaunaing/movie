@@ -23,7 +23,7 @@ const MobileMenu = () => {
   };
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden z-40">
       <MenuButton handleClick={handleClick} icon={<MenuIcon />} />
       {openSidebar && (
         <div className="fixed flex justify-center items-center inset-0 bg-black/60 backdrop-blur-md ">

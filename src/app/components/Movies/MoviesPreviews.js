@@ -2,7 +2,7 @@ import { getMovies } from "../../../lib/moviesList";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import Movie, { MovieSlider } from "./Movie";
+import { MovieSlider } from "./Movie";
 
 const MoviesPreviews = async ({
   newData,
@@ -34,22 +34,7 @@ const MoviesPreviews = async ({
               </Link>
             )}
           </h1>
-          {/* <div
-          style={{ scrollbarWidth: "none" }}
-          className="mt-4 flex overflow-x-auto md:overflow-auto space-x-4 scrollbar-hide  gap-1 "
-        >
-          {movies.map((movie) => {
-            return (
-              <Movie
-                className={"flex-shrink-0"}
-                seeMorePath={seeMorePath}
-                key={movie.id}
-                movie={movie}
-                imageClass={"h-[230px]"}
-              />
-            );
-          })}
-        </div> */}
+
           <MovieSlider
             seeMorePath={seeMorePath}
             basePath={basePath}

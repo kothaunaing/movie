@@ -46,7 +46,7 @@ const Details = ({ movie, className }) => {
 
 const MovieDetailsComponent = ({ movie, tab }) => {
   return (
-    <div className="relative">
+    <div className={`relative  `}>
       <div className="absolute inset-0 z-[-1] bg-black/50 backdrop-blur-sm" />
       <div className="md:grid md:grid-cols-2  p-2">
         <div className="mt-4 flex flex-col items-center ">

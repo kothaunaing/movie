@@ -30,8 +30,10 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setOpenSearch(true)}
-            className="flex items-center gap-1 p-3 hover:bg-white/80 rounded-full hover:text-black font-bold transition-colors"
+            className="relative flex items-center gap-1 p-3 hover:bg-white/80 rounded-full hover:text-black font-bold transition-colors"
           >
+            <div className="size-3 bg-blue-500 rounded-full right-0 absolute bottom-2/3 animate-ping" />
+            <div className="size-3 bg-blue-500 rounded-full right-0 absolute bottom-2/3" />
             <SearchIcon className="size-5" />
           </button>
         </div>

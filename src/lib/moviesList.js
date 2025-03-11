@@ -17,6 +17,7 @@ export async function getMovies(url, page) {
       accept: "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
+    next: { revalidate: 86400 },
   };
 
   try {

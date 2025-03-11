@@ -1,4 +1,3 @@
-import Movies from "./components/Movies/Movies";
 import MoviesPreviews from "./components/Movies/MoviesPreviews";
 
 export default function Home() {
